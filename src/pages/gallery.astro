@@ -63,9 +63,11 @@ const categories = ['All', 'Rooms', 'Food', 'Bar', 'Ambience'];
       <div id="gallery-grid" class="masonry-grid">
         {images.map((image, i) => (
           <div
-            class="masonry-item group cursor-pointer"
+            class="masonry-item reveal group cursor-pointer"
             data-category={image.category}
             data-index={i}
+            data-reveal="fade"
+            data-reveal-delay={String((i % 3) * 100)}
           >
             {image.url ? (
               <img

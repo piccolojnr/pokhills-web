@@ -14,8 +14,12 @@ const stats = [
 ---
 
 <div class="bg-stone grid grid-cols-2 md:grid-cols-4 divide-x divide-ochre/20">
-  {stats.map(({ value, label }) => (
-    <div class="flex flex-col items-center gap-1.5 py-10 px-4 text-center">
+  {stats.map(({ value, label }, i) => (
+    <div
+      class="reveal flex flex-col items-center gap-1.5 py-10 px-4 text-center"
+      data-reveal="fade"
+      data-reveal-delay={String(i * 100)}
+    >
       <span class="font-display text-[32px] font-normal leading-none text-bark">{value}</span>
       <span class="font-body text-[10px] uppercase tracking-[0.15em] text-muted">{label}</span>
     </div>

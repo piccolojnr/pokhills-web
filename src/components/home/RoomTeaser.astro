@@ -32,8 +32,10 @@ const { rooms } = Astro.props;
 
     <!-- Room grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {rooms.map(room => (
-        <RoomCard room={room} />
+      {rooms.map((room, i) => (
+        <div class="reveal" data-reveal="fade" data-reveal-delay={String(i * 100)}>
+          <RoomCard room={room} />
+        </div>
       ))}
     </div>
 

@@ -42,6 +42,68 @@
   --ph-font-body: 'DM Sans', system-ui, sans-serif;
 }
 
+/* ─── Scroll Reveal Animations ─────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal[data-reveal="left"] {
+  transform: translateX(-20px);
+}
+
+.reveal[data-reveal="right"] {
+  transform: translateX(20px);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.revealed {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ─── WhatsApp button delayed reveal ───────────────────────────────────────── */
+
+@keyframes wa-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wa-button {
+  opacity: 0;
+  animation: wa-fade-in 0.4s ease 3s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-button {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ─── Nav scroll border ─────────────────────────────────────────────────────── */
+
+.site-nav {
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
+}
+
+.site-nav.scrolled {
+  border-bottom-color: rgba(196, 180, 154, 0.25); /* stone/25 */
+}
+
 /* ─── Base Styles ───────────────────────────────────────────────────────────── */
 @layer base {
   *,

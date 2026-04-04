@@ -16,7 +16,7 @@ function isActive(href: string) {
 }
 ---
 
-<header class="sticky top-0 z-[100] flex items-center justify-between h-14 px-6 bg-green-deep">
+<header id="site-nav" class="site-nav sticky top-0 z-[100] flex items-center justify-between h-14 px-6 bg-green-deep">
 
   <!-- Logo -->
   <a href="/" class="leading-none" aria-label="Pokhills Eco Garden — home">
@@ -111,3 +111,14 @@ function isActive(href: string) {
     pointer-events: auto;
   }
 </style>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  if (nav) {
+    function update() {
+      nav!.classList.toggle('scrolled', window.scrollY > 80);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>

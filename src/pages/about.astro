@@ -125,8 +125,8 @@ try {
           What we care about
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {values.map(({ title, body }) => (
-            <div class="border-l-[3px] border-ochre bg-cream pl-6 pr-4 py-6">
+          {values.map(({ title, body }, i) => (
+            <div class="reveal border-l-[3px] border-ochre bg-cream pl-6 pr-4 py-6" data-reveal="fade" data-reveal-delay={String(i * 100)}>
               <h4 class="font-body font-medium text-[15px] text-bark mb-2 leading-snug">
                 {title}
               </h4>
