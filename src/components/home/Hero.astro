@@ -7,28 +7,35 @@ interface Props {
 const { tagline, subline } = Astro.props;
 ---
 
-<section class="hero relative flex flex-col items-center justify-center min-h-[85vh] bg-green-deep overflow-hidden px-6 text-center">
-
+<section
+  class="hero relative flex flex-col items-center justify-center min-h-[85vh] bg-green-deep overflow-hidden px-6 text-center"
+>
   <!-- Diagonal texture overlay -->
-  <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true">
+  </div>
 
   <!-- Content stack -->
   <div class="relative z-10 flex flex-col items-center gap-7 max-w-3xl w-full">
-
     <!-- Badge -->
-    <span class="entry entry-1 inline-block font-body text-[10px] uppercase tracking-[0.22em] text-ochre border border-ochre/40 px-5 py-2 rounded-sm">
+    <span
+      class="entry entry-1 inline-block font-body text-[10px] uppercase tracking-[0.22em] text-ochre border border-ochre/40 px-5 py-2 rounded-sm"
+    >
       Est. Ghana · One estate, two experiences
     </span>
 
     <!-- H1 -->
-    <h1 class="entry entry-2 font-display font-normal leading-[1.05] text-[40px] md:text-[64px]">
-      <span class="font-medium text-cream">{tagline.split(' ')[0]}</span>
+    <h1
+      class="entry entry-2 font-display font-normal leading-[1.05] text-[40px] md:text-[64px]"
+    >
+      <span class="font-medium text-cream">{tagline.split(" ")[0]}</span>
       <br />
-      <em class="not-italic italic text-stone">{tagline.split(' ').slice(1).join(' ')}</em>
+      <em class="italic text-stone">{tagline.split(" ").slice(1).join(" ")}</em>
     </h1>
 
     <!-- Subline -->
-    <p class="entry entry-3 font-display italic text-[18px] md:text-[20px] text-stone/80 max-w-lg leading-relaxed">
+    <p
+      class="entry entry-3 font-display italic text-[18px] md:text-[20px] text-stone/80 max-w-lg leading-relaxed"
+    >
       {subline}
     </p>
 
@@ -50,13 +57,23 @@ const { tagline, subline } = Astro.props;
   </div>
 
   <!-- Scroll indicator -->
-  <div class="entry entry-5 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50" aria-hidden="true">
-    <span class="font-body text-[9px] uppercase tracking-[0.2em] text-stone">Scroll</span>
-    <svg class="chevron w-4 h-4 text-stone" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M3 6l5 5 5-5"/>
+  <div
+    class="entry entry-5 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
+    aria-hidden="true"
+  >
+    <span class="font-body text-[9px] uppercase tracking-[0.2em] text-stone"
+      >Scroll</span
+    >
+    <svg
+      class="chevron w-4 h-4 text-stone"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+    >
+      <path d="M3 6l5 5 5-5"></path>
     </svg>
   </div>
-
 </section>
 
 <style>
@@ -73,24 +90,45 @@ const { tagline, subline } = Astro.props;
 
   /* Entry animations — staggered fade + rise */
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .entry {
     opacity: 0;
     animation: fade-up 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
-  .entry-1 { animation-delay: 0.15s; }
-  .entry-2 { animation-delay: 0.30s; }
-  .entry-3 { animation-delay: 0.50s; }
-  .entry-4 { animation-delay: 0.70s; }
-  .entry-5 { animation-delay: 1.10s; }
+  .entry-1 {
+    animation-delay: 0.15s;
+  }
+  .entry-2 {
+    animation-delay: 0.3s;
+  }
+  .entry-3 {
+    animation-delay: 0.5s;
+  }
+  .entry-4 {
+    animation-delay: 0.7s;
+  }
+  .entry-5 {
+    animation-delay: 1.1s;
+  }
 
   /* Scroll chevron bounce */
   @keyframes bounce-y {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(5px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
   }
 
   .chevron {

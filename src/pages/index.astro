@@ -1,28 +1,36 @@
 ---
-import Base from '@/components/layout/Base.astro';
-import Hero from '@/components/home/Hero.astro';
-import StatStrip from '@/components/home/StatStrip.astro';
-import ExperiencePanel from '@/components/home/ExperiencePanel.astro';
-import RoomTeaser from '@/components/home/RoomTeaser.astro';
-import ComingSoonBanner from '@/components/home/ComingSoonBanner.astro';
-import SectionLabel from '@/components/shared/SectionLabel.astro';
-import OganicDivider from '@/components/shared/OganicDivider.astro';
-import { getRooms, getSiteContent } from '@/lib/api';
-import { getContent } from '@/lib/utils';
+import Base from "@/components/layout/Base.astro";
+import Hero from "@/components/home/Hero.astro";
+import StatStrip from "@/components/home/StatStrip.astro";
+import ExperiencePanel from "@/components/home/ExperiencePanel.astro";
+import RoomTeaser from "@/components/home/RoomTeaser.astro";
+import ComingSoonBanner from "@/components/home/ComingSoonBanner.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import OganicDivider from "@/components/shared/OganicDivider.astro";
+import { getRooms, getSiteContent } from "@/lib/api";
+import { getContent } from "@/lib/utils";
 
 const rooms = await getRooms();
-const featuredRooms = rooms.filter(r => r.featured).slice(0, 3);
+const featuredRooms = rooms.filter((r) => r.featured).slice(0, 3);
 const content = await getSiteContent();
 ---
 
 <Base
   title="Home"
-  description={getContent(content, 'hero.subline', 'A boutique eco-retreat and garden bar in Pokrom, Ghana.')}
+  description={getContent(
+    content,
+    "hero.subline",
+    "A boutique eco-retreat and garden bar in Pokrom, Ghana.",
+  )}
 >
   <!-- 1. Hero -->
   <Hero
-    tagline={getContent(content, 'hero.tagline', 'Where the forest breathes')}
-    subline={getContent(content, 'hero.subline', 'A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.')}
+    tagline={getContent(content, "hero.tagline", "Where the forest breathes")}
+    subline={getContent(
+      content,
+      "hero.subline",
+      "A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.",
+    )}
   />
 
   <!-- 2. Stat Strip -->
@@ -35,9 +43,9 @@ const content = await getSiteContent();
       <h2 class="font-display font-normal text-[38px] leading-[1.15] text-bark">
         A garden that does two things well
       </h2>
-      <div class="w-12 h-[2px] bg-ochre rounded-none"></div>
+      <div class="w-12 h-0.5 bg-ochre rounded-none"></div>
       <p class="font-body text-base text-muted leading-relaxed">
-        {getContent(content, 'about.intro')}
+        {getContent(content, "about.intro")}
       </p>
     </div>
     <!-- Flows into the dark two-panel section -->

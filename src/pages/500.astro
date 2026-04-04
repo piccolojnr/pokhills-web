@@ -1,19 +1,24 @@
 ---
-import Base from '@/components/layout/Base.astro';
+import Base from "@/components/layout/Base.astro";
 ---
 
 <Base
   title="Something went wrong"
   description="An unexpected error occurred. Please try again or reach us directly."
 >
-  <section class="hero-500 relative flex flex-col items-center justify-center min-h-[calc(100svh-3.5rem)] bg-bark overflow-hidden px-6 text-center">
-
+  <section
+    class="hero-500 relative flex flex-col items-center justify-center min-h-[calc(100svh-3.5rem)] bg-bark overflow-hidden px-6 text-center"
+  >
     <!-- Texture overlay -->
-    <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div
+      class="texture absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
 
     <!-- Decorative large number -->
     <span
-      class="absolute font-display font-medium text-cream/[0.03] select-none pointer-events-none"
+      class="absolute font-display font-medium text-cream/3 select-none pointer-events-none"
       style="font-size: clamp(160px, 30vw, 320px); line-height: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);"
       aria-hidden="true"
     >
@@ -22,17 +27,22 @@ import Base from '@/components/layout/Base.astro';
 
     <!-- Content -->
     <div class="relative z-10 flex flex-col items-center gap-7 max-w-xl">
-      <span class="font-body text-[10px] uppercase tracking-[0.22em] text-ochre border border-ochre/40 px-5 py-2 rounded-sm">
+      <span
+        class="font-body text-[10px] uppercase tracking-[0.22em] text-ochre border border-ochre/40 px-5 py-2 rounded-sm"
+      >
         Unexpected error
       </span>
 
-      <h1 class="font-display font-normal text-[40px] md:text-[52px] leading-[1.1] text-cream">
+      <h1
+        class="font-display font-normal text-[40px] md:text-[52px] leading-[1.1] text-cream"
+      >
         Something went wrong<br />
         <em class="italic text-stone">on our end</em>
       </h1>
 
       <p class="font-body text-sm text-stone/80 leading-relaxed max-w-sm">
-        An unexpected error occurred. Our team has been notified. In the meantime, try refreshing — or reach us directly if this keeps happening.
+        An unexpected error occurred. Our team has been notified. In the
+        meantime, try refreshing — or reach us directly if this keeps happening.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center mt-2">
@@ -43,7 +53,7 @@ import Base from '@/components/layout/Base.astro';
           Back to home
         </a>
         <a
-          href={`https://wa.me/${(import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000').replace(/\D/g, '')}`}
+          href={`https://wa.me/${(import.meta.env.PUBLIC_WHATSAPP ?? "+233000000000").replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
           class="font-body text-[11px] uppercase tracking-[0.14em] text-cream border border-cream/30 px-8 py-3.5 rounded-sm transition-colors duration-200 hover:border-cream/60 hover:bg-white/5"
@@ -56,7 +66,7 @@ import Base from '@/components/layout/Base.astro';
       <div class="w-12 h-px bg-ochre/30 mt-4"></div>
 
       <p class="font-body text-[11px] text-muted">
-        Or email us at{' '}
+        Or email us at{" "}
         <a
           href="mailto:hello@pokhillsecogarden.com"
           class="text-ochre hover:text-ochre-light transition-colors duration-150"
