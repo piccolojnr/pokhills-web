@@ -7,7 +7,7 @@
     "description": "The Garden Suite is our most generous room — a full retreat within a retreat. Floor-to-ceiling louvred shutters open onto a private terrace where bougainvillea climbs the stone wall and a ceiling fan stirs the warm air. Timber beams, hand-laid mosaic floors, and locally woven textiles give the space a grounded, unhurried quality that invites you to slow down.\n\nThe bathroom is a highlight in itself: a deep soaking tub sits beneath a skylight, and the open-air shower is screened by a garden hedge rather than glass. Breakfast is served on your terrace each morning — you set the time. For guests wanting the full Pokhills experience without compromise, this is the room.",
     "type": "suite",
     "amenities": ["King bed", "Private terrace", "Garden view", "Soaking tub", "Open-air shower", "Ceiling fan", "Minibar", "Free Wi-Fi", "Mosquito net"],
-    "images": ["/images/placeholder.svg"],
+    "images": [],
     "publicRate": 480,
     "featured": true
   },
@@ -31,7 +31,7 @@
     "description": "A ten-minute walk from the main house, the Forest Cabin sits at the edge of the estate where the managed garden gives way to denser bush. The structure is half-open: one wall is a sliding screen that, when drawn back, dissolves the boundary between inside and out. You fall asleep to tree frogs; you wake to light filtering through leaves.\n\nThe cabin has its own small deck with a pair of chairs and a lantern-lit table — ideal for a private dinner arranged by the kitchen. Solar-powered lighting keeps the footprint low and the night sky undisturbed. The outdoor shower is fed by a solar-heated tank and screened by a bamboo enclosure. Most guests who book the cabin don't want to leave.",
     "type": "cabin",
     "amenities": ["King bed", "Private deck", "Forest view", "Outdoor shower", "Solar lighting", "Mosquito net", "Hammock", "Free Wi-Fi"],
-    "images": ["https://broken.example/photo.jpg", "https://broken.example/photo2.jpg"],
+    "images": [],
     "publicRate": 390,
     "featured": true
   },

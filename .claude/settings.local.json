@@ -8,10 +8,7 @@
       "Read(//c/Users/USER/projects/banass consult/pokhills-web/**)",
       "Bash(done)",
       "Bash(do)",
-      "Bash(echo \"=== $f ===\")",
-      "Bash(git add *)",
-      "Bash(git commit -m *",
-      "Bash(git push)"
+      "Bash(echo \"=== $f ===\")"
     ]
   }
 }
