@@ -1,0 +1,197 @@
+---
+import Base from '@/components/layout/Base.astro';
+import SectionLabel from '@/components/shared/SectionLabel.astro';
+import PlaceholderImage from '@/components/shared/PlaceholderImage.astro';
+import OganicDivider from '@/components/shared/OganicDivider.astro';
+import ComingSoonBadge from '@/components/shared/ComingSoonBadge.astro';
+import WaitlistForm from '@/components/home/WaitlistForm';
+import { getSiteContent } from '@/lib/api';
+import { getContent } from '@/lib/utils';
+
+const content = await getSiteContent();
+
+const description = getContent(content, 'restaurant.description', '');
+const kitchen    = getContent(content, 'restaurant.kitchen', '');
+const bar        = getContent(content, 'restaurant.bar', '');
+
+let hours = { weekdays: 'Tue – Fri, 11am – 10pm', weekends: 'Sat & Sun, 9am – 11pm', bar: 'Bar until midnight on weekends' };
+try {
+  const raw = getContent(content, 'restaurant.hours', '{}');
+  hours = { ...hours, ...JSON.parse(raw) };
+} catch { /* keep defaults */ }
+
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000';
+const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('Hi! I\'d like to reserve a table at Pokrom Garden Bar.')}`;
+---
+
+<Base
+  title="Pokrom Garden Bar — Pokhills Eco Garden"
+  description={description}
+>
+
+  <!-- 1. Hero -->
+  <section class="relative flex items-center justify-center min-h-[50vh] bg-bark overflow-hidden">
+
+    <!-- Placeholder image as background -->
+    <div class="absolute inset-0">
+      <div class="w-full h-full">
+        <PlaceholderImage tone="ochre" aspect="16/9" label="" />
+      </div>
+    </div>
+
+    <!-- Ochre tint overlay -->
+    <div class="absolute inset-0" style="background-color: rgba(139,105,20,0.15);"></div>
+
+    <!-- Diagonal texture -->
+    <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col items-center gap-4 text-center px-6 py-20">
+      <SectionLabel text="Pokrom Garden Bar" color="ochre" />
+      <h1 class="font-display font-normal text-[44px] md:text-[52px] leading-[1.1] text-cream">
+        Eat, drink, and linger
+      </h1>
+      {description && (
+        <p class="font-display italic text-[17px] md:text-[19px] text-stone/80 max-w-xl leading-relaxed mt-1">
+          {description}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- 2. Two-column story -->
+  <section class="bg-cream py-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+      <!-- Left: The kitchen -->
+      <div class="flex flex-col gap-6">
+        <div>
+          <h3 class="font-display font-normal text-[26px] text-bark leading-tight mb-4">
+            The kitchen
+          </h3>
+          <p class="font-body font-light text-base text-muted leading-[1.8]">
+            {kitchen}
+          </p>
+        </div>
+        <PlaceholderImage tone="ochre" aspect="4/3" label="Kitchen photography coming soon" />
+      </div>
+
+      <!-- Right: The bar -->
+      <div class="flex flex-col gap-6">
+        <PlaceholderImage tone="ochre" aspect="4/3" label="Bar photography coming soon" />
+        <div>
+          <h3 class="font-display font-normal text-[26px] text-bark leading-tight mb-4">
+            The bar
+          </h3>
+          <p class="font-body font-light text-base text-muted leading-[1.8]">
+            {bar}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divider into stone -->
+  <div class="bg-cream">
+    <OganicDivider fill="#D6CFBF" />
+  </div>
+
+  <!-- 3. Opening hours -->
+  <section class="bg-stone py-20 px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <SectionLabel text="Visit us" color="ochre" />
+      <h3 class="font-display font-normal text-[30px] text-bark leading-tight mt-3 mb-12">
+        When we're open
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-stone/30">
+        {[
+          { label: 'Mon – Fri', time: hours.weekdays },
+          { label: 'Sat & Sun', time: hours.weekends },
+          { label: 'Bar hours', time: hours.bar },
+        ].map(({ label, time }) => (
+          <div class="bg-cream border border-stone/20 flex flex-col items-center justify-center gap-3 px-6 py-8">
+            <span class="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
+              {label}
+            </span>
+            <span class="font-display font-normal text-[22px] text-bark leading-snug text-center">
+              {time}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-[12px] text-muted mt-6">
+        Closed on Mondays. Kitchen closes 30 minutes before bar.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Table reservation -->
+  <section class="bg-bark py-24 px-6 flex flex-col items-center text-center gap-6 overflow-hidden relative">
+
+    <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 flex flex-col items-center gap-6 w-full max-w-lg">
+      <SectionLabel text="Reservations" color="ochre" />
+
+      <h3 class="font-display font-normal italic text-[32px] md:text-[38px] leading-[1.1] text-cream">
+        Book a table — coming soon
+      </h3>
+
+      <p class="font-body text-sm text-stone/80 leading-relaxed max-w-sm">
+        Online table booking is on the way. Call or WhatsApp to reserve.
+      </p>
+
+      <ComingSoonBadge text="Online booking coming soon" />
+
+      <div class="w-full mt-2">
+        <WaitlistForm interest="restaurant" client:load />
+      </div>
+
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.14em] text-cream border border-cream/30 px-8 py-3.5 rounded-sm transition-colors duration-200 hover:border-cream/60 hover:bg-white/5 mt-2"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+        </svg>
+        Reserve via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. Menu preview CTA -->
+  <section class="bg-cream py-24 px-6 flex flex-col items-center text-center gap-6">
+    <SectionLabel text="The menu" color="ochre" />
+    <h3 class="font-display font-normal text-[30px] md:text-[36px] text-bark leading-tight">
+      Curious about the menu?
+    </h3>
+    <p class="font-body text-sm text-muted max-w-xs leading-relaxed">
+      Browse what's coming out of the kitchen and behind the bar.
+    </p>
+    <a
+      href="/menu"
+      class="inline-flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.14em] text-cream bg-ochre px-10 py-4 rounded-sm transition-colors duration-200 hover:bg-ochre-light mt-2"
+    >
+      View the menu
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </section>
+
+</Base>
+
+<style>
+  .texture {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+</style>
