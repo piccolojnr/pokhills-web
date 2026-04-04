@@ -1,0 +1,113 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { label: 'Stay',         href: '/rooms' },
+  { label: 'Dine & Drink', href: '/restaurant' },
+  { label: 'Menu',         href: '/menu' },
+  { label: 'Gallery',      href: '/gallery' },
+  { label: 'About',        href: '/about' },
+  { label: 'Contact',      href: '/contact' },
+];
+
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-[100] flex items-center justify-between h-14 px-6 bg-green-deep">
+
+  <!-- Logo -->
+  <a href="/" class="leading-none" aria-label="Pokhills Eco Garden — home">
+    <span class="font-display font-medium text-xl text-cream tracking-[0.02em]">Pokhills</span
+    ><span class="font-display font-normal italic text-xl text-stone tracking-[0.02em]"> Eco Garden</span>
+  </a>
+
+  <!-- Desktop nav -->
+  <nav class="hidden md:flex items-center gap-7" aria-label="Primary navigation">
+    {links.map(({ label, href }) => (
+      <a
+        href={href}
+        class:list={[
+          'font-body text-[11px] font-normal uppercase tracking-[0.1em] transition-colors duration-150',
+          isActive(href) ? 'text-cream' : 'text-stone hover:text-cream',
+        ]}
+      >
+        {label}
+      </a>
+    ))}
+    <a
+      href="/reserve"
+      class="font-body text-[11px] font-medium uppercase tracking-[0.1em] text-cream bg-ochre px-[0.9rem] py-[0.45rem] rounded transition-colors duration-150 hover:bg-ochre-light"
+    >
+      Book now
+    </a>
+  </nav>
+
+  <!-- Mobile hamburger -->
+  <label
+    for="nav-toggle"
+    class="flex md:hidden items-center justify-center text-cream cursor-pointer p-1"
+    aria-label="Open menu"
+  >
+    <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+      <rect y="0"  width="22" height="2" fill="currentColor"/>
+      <rect y="7"  width="22" height="2" fill="currentColor"/>
+      <rect y="14" width="22" height="2" fill="currentColor"/>
+    </svg>
+  </label>
+</header>
+
+<!-- Hidden checkbox drives the overlay — no JS required -->
+<input
+  type="checkbox"
+  id="nav-toggle"
+  class="absolute w-px h-px opacity-0 pointer-events-none"
+  aria-hidden="true"
+/>
+
+<!-- Mobile overlay -->
+<div
+  class="nav-overlay fixed inset-0 z-[200] bg-green-deep flex flex-col items-center justify-center gap-1 opacity-0 pointer-events-none transition-opacity duration-200"
+  aria-hidden="true"
+>
+  <label
+    for="nav-toggle"
+    class="absolute top-5 right-6 text-stone cursor-pointer p-1"
+    aria-label="Close menu"
+  >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <line x1="1" y1="1" x2="19" y2="19" stroke="currentColor" stroke-width="2"/>
+      <line x1="19" y1="1" x2="1" y2="19" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </label>
+
+  <nav class="flex flex-col items-center gap-1" aria-label="Mobile navigation">
+    {links.map(({ label, href }) => (
+      <a
+        href={href}
+        class:list={[
+          'font-display text-4xl font-normal tracking-[0.04em] leading-[1.4] transition-colors duration-150',
+          isActive(href) ? 'text-cream' : 'text-stone hover:text-cream',
+        ]}
+      >
+        {label}
+      </a>
+    ))}
+    <a
+      href="/reserve"
+      class="mt-6 font-body text-xs font-medium uppercase tracking-[0.1em] text-cream bg-ochre px-6 py-[0.65rem] rounded"
+    >
+      Book now
+    </a>
+  </nav>
+</div>
+
+<style>
+  /* Checkbox toggle — cannot be expressed as Tailwind utilities */
+  #nav-toggle:checked ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>

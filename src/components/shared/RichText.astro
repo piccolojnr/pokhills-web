@@ -1,0 +1,48 @@
+---
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<div class="rich-text" set:html={content} />
+
+<style>
+  /*
+   * :global() is required here — set:html renders HTML outside Astro's
+   * scoped class system, so child elements cannot be targeted with Tailwind.
+   * Token CSS custom properties are used instead of hardcoded hex values.
+   */
+  .rich-text :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  .rich-text :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .rich-text :global(a) {
+    color: var(--color-ochre);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
+  }
+  .rich-text :global(a:hover) {
+    color: var(--color-ochre-light);
+  }
+  .rich-text :global(strong) {
+    font-weight: 500;
+  }
+  .rich-text :global(em) {
+    font-style: italic;
+  }
+  .rich-text :global(ul),
+  .rich-text :global(ol) {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .rich-text :global(li) {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
+  }
+</style>

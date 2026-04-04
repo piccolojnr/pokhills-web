@@ -1,0 +1,18 @@
+---
+interface Props {
+  text: string;
+  color?: 'ochre' | 'stone' | 'cream';
+}
+
+const { text, color = 'ochre' } = Astro.props;
+
+const colorClass = {
+  ochre: 'text-ochre',
+  stone: 'text-stone',
+  cream: 'text-cream',
+}[color];
+---
+
+<p class:list={['font-body text-[10px] font-normal uppercase tracking-[0.2em] leading-none', colorClass]}>
+  {text}
+</p>

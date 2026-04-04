@@ -1,11 +1,14 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Base from "@/components/layout/Base.astro";
+import Welcome from "../components/Welcome.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Base
+  title="Welcome to Astro"
+  description="Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need to get up and running quickly."
+>
+  <Welcome />
+</Base>
