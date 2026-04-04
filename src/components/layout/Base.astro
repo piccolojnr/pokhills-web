@@ -1,8 +1,8 @@
 ---
-import '@/styles/global.css';
-import Nav from './Nav.astro';
-import Footer from './Footer.astro';
-import WhatsAppButton from '../shared/WhatsAppButton.astro';
+import "@/styles/global.css";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+import WhatsAppButton from "../shared/WhatsAppButton.astro";
 
 interface Props {
   title: string;
@@ -12,8 +12,8 @@ interface Props {
 
 const {
   title,
-  description = 'A boutique eco-retreat and garden bar in Pokrom, Ghana.',
-  ogImage = '/og-default.jpg',
+  description = "A boutique eco-retreat and garden bar in Pokrom, Ghana.",
+  ogImage = "/og-default.jpg",
 } = Astro.props;
 
 const fullTitle = `${title} — Pokhills Eco Garden`;
@@ -50,11 +50,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href="/favicon.ico" />
 
     <!-- Font preloads — Cormorant Garamond -->
-    <link rel="preload" href="/fonts/CormorantGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/CormorantGaramond-Medium.woff2"  as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/CormorantGaramond-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/CormorantGaramond-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <!-- Font preloads — DM Sans -->
-    <link rel="preload" href="/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/DMSans-Medium.woff2"  as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/DMSans-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/DMSans-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
   </head>
   <body>
     <Nav />
