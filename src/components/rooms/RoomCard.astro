@@ -1,7 +1,10 @@
 ---
 import type { Room } from "@/lib/types";
 import SmartImage from "../shared/SmartImage.astro";
+import PlaceholderImage from "../shared/PlaceholderImage.astro";
 import { formatGHS } from "@/lib/utils";
+
+const hasImage = (room: Room) => Boolean(room.images[0]?.trim());
 
 interface Props {
   room: Room;
@@ -27,12 +30,16 @@ const extraCount = room.amenities.length - 3;
 >
   <!-- Image area -->
   <div class="relative">
-    <SmartImage
-      src={room.images[0]}
-      alt={room.name}
-      class="w-full aspect-3/2 object-cover"
-      loading="lazy"
-    />
+    {hasImage(room) ? (
+      <SmartImage
+        src={room.images[0]}
+        alt={room.name}
+        class="w-full aspect-3/2 object-cover"
+        loading="lazy"
+      />
+    ) : (
+      <PlaceholderImage tone="green" aspect="3/2" seed={room.name} label="" />
+    )}
 
     <!-- Type badge — top left -->
     <span

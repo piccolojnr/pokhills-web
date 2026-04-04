@@ -5,6 +5,7 @@ import AmenityBadge from "@/components/rooms/AmenityBadge.astro";
 import RoomCard from "@/components/rooms/RoomCard.astro";
 import ComingSoonBadge from "@/components/shared/ComingSoonBadge.astro";
 import RoomGallery from "@/components/rooms/RoomGallery";
+import PlaceholderImage from "@/components/shared/PlaceholderImage.astro";
 import { getRooms } from "@/lib/api";
 import { formatGHS } from "@/lib/utils";
 import type { Room } from "@/lib/types";
@@ -66,7 +67,11 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodeURICom
       >
         <!-- Gallery -->
         <div>
-          <RoomGallery images={room.images} roomName={room.name} client:load />
+          {room.images.length > 0 ? (
+            <RoomGallery images={room.images} roomName={room.name} client:load />
+          ) : (
+            <PlaceholderImage tone="green" aspect="4/3" seed={room.name} label="Photography coming soon" />
+          )}
         </div>
 
         <!-- Sticky detail card -->
