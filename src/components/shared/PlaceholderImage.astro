@@ -3,12 +3,14 @@ interface Props {
   label?: string;
   aspect?: string;
   tone?: 'green' | 'ochre' | 'stone';
+  seed?: string | number;
 }
 
 const {
   label = 'Photography coming soon',
   aspect = '4/3',
   tone = 'green',
+  seed = 0,
 } = Astro.props;
 
 // Dark tones not in the token palette — arbitrary Tailwind values
@@ -20,6 +22,14 @@ const bgClass = {
 
 // Label opacity: stone/45 reads well on dark; bark/35 on light earth tone
 const labelClass = tone === 'stone' ? 'text-bark/35' : 'text-stone/45';
+
+// Vary diagonal angle per seed so placeholders don't all look identical
+const angles = [45, -45, 30, -30, 60, -60];
+const seedNum = typeof seed === 'string'
+  ? seed.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0)
+  : Number(seed);
+const angle = angles[Math.abs(seedNum) % angles.length];
+const textureStyle = `background-image: repeating-linear-gradient(${angle}deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 8px);`;
 ---
 
 <div
@@ -28,22 +38,10 @@ const labelClass = tone === 'stone' ? 'text-bark/35' : 'text-stone/45';
   aria-label={label}
   role="img"
 >
-  <!-- Diagonal texture — repeating-linear-gradient cannot be a Tailwind utility -->
-  <div class="texture absolute inset-0" aria-hidden="true"></div>
+  <!-- Diagonal texture — angle varies by seed -->
+  <div class="absolute inset-0" style={textureStyle} aria-hidden="true"></div>
 
   <span class:list={['relative font-body text-[10px] font-normal uppercase tracking-[0.14em] text-center px-4 z-10', labelClass]}>
     {label}
   </span>
 </div>
-
-<style>
-  .texture {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.06) 0px,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px,
-      transparent 8px
-    );
-  }
-</style>

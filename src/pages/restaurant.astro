@@ -73,12 +73,12 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURICom
             {kitchen}
           </p>
         </div>
-        <PlaceholderImage tone="ochre" aspect="4/3" label="Kitchen photography coming soon" />
+        <PlaceholderImage tone="ochre" aspect="4/3" label="Kitchen photography coming soon" seed="kitchen" />
       </div>
 
       <!-- Right: The bar -->
       <div class="flex flex-col gap-6">
-        <PlaceholderImage tone="ochre" aspect="4/3" label="Bar photography coming soon" />
+        <PlaceholderImage tone="ochre" aspect="4/3" label="Bar photography coming soon" seed="bar" />
         <div>
           <h3 class="font-display font-normal text-[26px] text-bark leading-tight mb-4">
             The bar
@@ -106,7 +106,7 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURICom
       </h3>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-stone/30">
         {[
-          { label: 'Mon – Fri', time: hours.weekdays },
+          { label: 'Tue – Fri', time: hours.weekdays },
           { label: 'Sat & Sun', time: hours.weekends },
           { label: 'Bar hours', time: hours.bar },
         ].map(({ label, time }) => (
