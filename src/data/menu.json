@@ -1,121 +1,240 @@
 {
-  "categories": [
+  "Food": [
     {
-      "id": 1,
-      "slug": "small-plates",
-      "name": "Small Plates",
-      "description": "Snacks and sharing plates — the way we like to eat",
-      "sort_order": 1,
-      "items": [
-        {
-          "id": 1,
-          "name": "Kelewele",
-          "description": "Spiced fried plantain with groundnut dip",
-          "price": 35,
-          "currency": "GHS",
-          "tags": ["vegan", "signature"],
-          "is_available": true,
-          "sort_order": 1
-        },
-        {
-          "id": 2,
-          "name": "Garden Salad",
-          "description": "Seasonal leaves, tomato, cucumber, lime dressing",
-          "price": 45,
-          "currency": "GHS",
-          "tags": ["vegan", "gluten-free"],
-          "is_available": true,
-          "sort_order": 2
-        },
-        {
-          "id": 3,
-          "name": "Grilled Yam Fries",
-          "description": "With shito aioli",
-          "price": 40,
-          "currency": "GHS",
-          "tags": ["vegan"],
-          "is_available": true,
-          "sort_order": 3
-        }
-      ]
+      "id": "f1",
+      "name": "Grilled Tilapia",
+      "description": "Whole fish from the Volta, grilled over charcoal and served with banku and garden tomato stew.",
+      "price": 120,
+      "category": "Food",
+      "featured": true,
+      "image": null,
+      "available": true
     },
     {
-      "id": 2,
-      "slug": "mains",
-      "name": "Mains",
-      "description": null,
-      "sort_order": 2,
-      "items": [
-        {
-          "id": 4,
-          "name": "Grilled Tilapia",
-          "description": "Whole fish, banku, tomato stew, garden greens",
-          "price": 120,
-          "currency": "GHS",
-          "tags": ["gluten-free", "signature"],
-          "is_available": true,
-          "sort_order": 1
-        },
-        {
-          "id": 5,
-          "name": "Jollof Rice",
-          "description": "Smoky party jollof, fried chicken, coleslaw",
-          "price": 95,
-          "currency": "GHS",
-          "tags": ["signature"],
-          "is_available": true,
-          "sort_order": 2
-        },
-        {
-          "id": 6,
-          "name": "Forest Mushroom Stew",
-          "description": "Wild mushrooms, palm oil base, served with kenkey",
-          "price": 85,
-          "currency": "GHS",
-          "tags": ["vegan"],
-          "is_available": true,
-          "sort_order": 3
-        }
-      ]
+      "id": "f2",
+      "name": "Jollof Rice & Chicken",
+      "description": "Smoky party jollof slow-cooked in a cast-iron pot, paired with spiced roast chicken and coleslaw.",
+      "price": 95,
+      "category": "Food",
+      "featured": true,
+      "image": null,
+      "available": true
     },
     {
-      "id": 3,
-      "slug": "drinks",
-      "name": "Drinks",
-      "description": "Fresh, local, and lovingly made",
-      "sort_order": 3,
-      "items": [
-        {
-          "id": 7,
-          "name": "Pokrom Garden Punch",
-          "description": "Hibiscus, ginger, lime, sparkling water",
-          "price": 30,
-          "currency": "GHS",
-          "tags": ["signature", "non-alcoholic"],
-          "is_available": true,
-          "sort_order": 1
-        },
-        {
-          "id": 8,
-          "name": "Fresh Coconut",
-          "description": "Chilled, served whole",
-          "price": 20,
-          "currency": "GHS",
-          "tags": ["vegan", "non-alcoholic"],
-          "is_available": true,
-          "sort_order": 2
-        },
-        {
-          "id": 9,
-          "name": "Local Craft Beer",
-          "description": "Rotating selection from Ghanaian breweries",
-          "price": 35,
-          "currency": "GHS",
-          "tags": [],
-          "is_available": true,
-          "sort_order": 3
-        }
-      ]
+      "id": "f3",
+      "name": "Kontomire Stew",
+      "description": "Cocoyam leaves simmered with garden eggs, smoked fish, and palm oil — served with boiled plantain.",
+      "price": 75,
+      "category": "Food",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "f4",
+      "name": "Kelewele Platter",
+      "description": "Spiced fried plantain tossed in ginger, cloves, and chilli — served with peanut dipping sauce.",
+      "price": 55,
+      "category": "Food",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "f5",
+      "name": "Garden Omelette",
+      "description": "Three-egg omelette filled with tomatoes, peppers, onions, and fresh herbs from the estate garden.",
+      "price": 65,
+      "category": "Food",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "f6",
+      "name": "Yam & Palava Sauce",
+      "description": "Boiled yellow yam with a rich spinach and smoked salmon sauce.",
+      "price": 80,
+      "category": "Food",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "f7",
+      "name": "Lamb Groundnut Soup",
+      "description": "Slow-braised lamb in a velvety groundnut broth with fresh tomatoes, served with fufu.",
+      "price": 110,
+      "category": "Food",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "f8",
+      "name": "Forest Mushroom Stir-fry",
+      "description": "Wild oyster mushrooms from the estate, wok-fried with garlic, spring onions, and a splash of palm wine.",
+      "price": 70,
+      "category": "Food",
+      "featured": false,
+      "image": null,
+      "available": true
+    }
+  ],
+  "Drinks": [
+    {
+      "id": "d1",
+      "name": "Hibiscus Zobo",
+      "description": "House-brewed zobo with dried hibiscus, ginger, and a hint of clove — served over ice.",
+      "price": 25,
+      "category": "Drinks",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "d2",
+      "name": "Fresh Coconut",
+      "description": "Young coconut served whole, chilled, with a straw — as nature intended.",
+      "price": 20,
+      "category": "Drinks",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "d3",
+      "name": "Tamarind Cooler",
+      "description": "Tamarind concentrate, sparkling water, lime, and a pinch of chilli salt.",
+      "price": 28,
+      "category": "Drinks",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "d4",
+      "name": "Star Beer",
+      "description": "Ghana's favourite lager, served cold.",
+      "price": 30,
+      "category": "Drinks",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "d5",
+      "name": "Palm Wine",
+      "description": "Freshly tapped palm wine sourced from a local tapper — naturally fermented, slightly effervescent.",
+      "price": 35,
+      "category": "Drinks",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "d6",
+      "name": "Akpeteshie Neat",
+      "description": "A measure of Ghana's traditional cane spirit — served straight, the old way.",
+      "price": 40,
+      "category": "Drinks",
+      "featured": false,
+      "image": null,
+      "available": true
+    }
+  ],
+  "Cocktails": [
+    {
+      "id": "c1",
+      "name": "The Harmattan",
+      "description": "Akpeteshie, dry ginger, fresh lime, honey, and a rim of smoked chilli salt.",
+      "price": 65,
+      "category": "Cocktails",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "c2",
+      "name": "Garden Sling",
+      "description": "Gin, hibiscus syrup, cucumber, mint, and tonic — long and botanical.",
+      "price": 70,
+      "category": "Cocktails",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "c3",
+      "name": "Volta Mule",
+      "description": "Dark rum, ginger beer, lime, and a float of palm wine.",
+      "price": 65,
+      "category": "Cocktails",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "c4",
+      "name": "Pokrom Sunset",
+      "description": "Campari, fresh orange, bitter lemon, and a wedge of dried mango on the rim.",
+      "price": 60,
+      "category": "Cocktails",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "c5",
+      "name": "The Night Watchman",
+      "description": "Bourbon, tamarind bitters, demerara, orange peel — stirred, never shaken.",
+      "price": 75,
+      "category": "Cocktails",
+      "featured": true,
+      "image": null,
+      "available": true
+    }
+  ],
+  "Small Bites": [
+    {
+      "id": "s1",
+      "name": "Chin Chin Bowl",
+      "description": "Crispy fried dough twists, lightly sweetened — the bar snack Ghana grew up on.",
+      "price": 20,
+      "category": "Small Bites",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "s2",
+      "name": "Suya Skewers",
+      "description": "Northern-style spiced beef skewers grilled over charcoal, served with sliced onion and tomato.",
+      "price": 55,
+      "category": "Small Bites",
+      "featured": true,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "s3",
+      "name": "Garden Bruschetta",
+      "description": "Toasted local bread topped with ripe tomatoes, basil, and a drizzle of chilli oil.",
+      "price": 40,
+      "category": "Small Bites",
+      "featured": false,
+      "image": null,
+      "available": true
+    },
+    {
+      "id": "s4",
+      "name": "Peanut & Plantain Bites",
+      "description": "Twice-fried plantain rounds topped with spiced groundnut paste and pickled pepper.",
+      "price": 45,
+      "category": "Small Bites",
+      "featured": true,
+      "image": null,
+      "available": true
     }
   ]
 }

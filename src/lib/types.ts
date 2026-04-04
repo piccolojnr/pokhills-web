@@ -1,64 +1,62 @@
 // ─── Room ────────────────────────────────────────────────────────────────────
 
 export interface Room {
-  id: number;
+  id: string;
   slug: string;
   name: string;
   tagline: string;
   description: string;
-  price_per_night: number;
-  currency: string;
-  capacity: number;
-  size_sqm: number;
+  type: 'suite' | 'standard' | 'cabin' | 'deluxe';
   amenities: string[];
-  images: RoomImage[];
-  is_available: boolean;
-  sort_order: number;
-}
-
-export interface RoomImage {
-  url: string;
-  alt: string;
-  is_primary: boolean;
+  images: string[];
+  publicRate: number;
+  featured: boolean;
 }
 
 // ─── Menu ────────────────────────────────────────────────────────────────────
 
-export interface MenuCategory {
-  id: number;
-  slug: string;
-  name: string;
-  description: string | null;
-  sort_order: number;
-  items: MenuItem[];
-}
-
 export interface MenuItem {
-  id: number;
+  id: string;
   name: string;
   description: string | null;
   price: number;
-  currency: string;
-  tags: string[];          // e.g. ['vegan', 'gluten-free', 'signature']
-  is_available: boolean;
-  sort_order: number;
+  category: string;
+  featured: boolean;
+  image: string | null;
+  available: boolean;
 }
 
-export interface MenuResponse {
-  categories: MenuCategory[];
-}
+export type MenuResponse = {
+  [category: string]: MenuItem[];
+};
 
 // ─── Gallery ─────────────────────────────────────────────────────────────────
 
 export interface GalleryImage {
-  id: number;
+  id: string;
   url: string;
-  alt: string;
   caption: string | null;
-  category: 'rooms' | 'restaurant' | 'garden' | 'events' | 'general';
-  sort_order: number;
+  category: 'rooms' | 'food' | 'bar' | 'ambience' | 'events';
+  sortOrder: number;
 }
 
 // ─── Site Content ─────────────────────────────────────────────────────────────
 
-export type SiteContent = Record<string, string>;
+export type SiteContent = {
+  [key: string]: string;
+};
+
+// ─── Forms ───────────────────────────────────────────────────────────────────
+
+export interface WaitlistEntry {
+  contact: string;
+  contactType: 'email' | 'whatsapp';
+  interest: 'rooms' | 'restaurant' | 'both';
+}
+
+export interface ContactMessage {
+  name: string;
+  contact: string;
+  subject: string;
+  message: string;
+}

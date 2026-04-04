@@ -1,0 +1,20 @@
+{
+  "hero.tagline": "Where the forest breathes",
+  "hero.subline": "A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.",
+
+  "about.intro": "Pokhills Eco Garden began as a small plot of land and a stubborn belief that hospitality and the natural world don't have to be in conflict.",
+  "about.story.1": "The estate has been shaped slowly, over several years, by hand. The rooms were built using rammed earth, reclaimed timber, and stone quarried from the ridge behind the property. Nothing was rushed. The garden was planted before the first guest ever arrived — we wanted the trees to have a head start.",
+  "about.story.2": "Pokrom Garden Bar came later, when neighbours and passing travellers began stopping at the gate to ask if they could sit a while. The kitchen grew out of those early afternoons: informal, seasonal, rooted in what the garden and the nearby market had to offer that week. It still works that way.",
+  "about.story.3": "We are a small operation, and we intend to stay that way. Every room is attended to personally. The food is cooked to order. The bar closes when the last guest heads to bed. We measure success not by occupancy rates, but by the number of guests who ask, on their last morning, if they can stay one more night.",
+  "about.values": "[{\"title\":\"Low footprint\",\"body\":\"Solar power, rainwater harvesting, composting, and a strict no-single-use-plastic policy across the estate.\"},{\"title\":\"Community first\",\"body\":\"We source from local farmers, employ from the surrounding villages, and reinvest a portion of every booking into the Pokrom community fund.\"},{\"title\":\"Slow hospitality\",\"body\":\"No check-in kiosks, no QR code menus, no algorithm. Just people, food, and a garden that rewards those who take their time.\"}]",
+
+  "restaurant.description": "Pokrom Garden Bar is open to guests and visitors alike. The terrace catches the afternoon breeze off the ridge, and the kitchen stays open until the last order is called — usually long after the stars are out.",
+  "restaurant.kitchen": "The menu changes with the market and the season. We cook Ghanaian food with confidence and restraint: familiar dishes made with care, and a handful of house specials that have become regulars in their own right. The wood-fired grill runs every evening; the groundnut soup simmers from midday.",
+  "restaurant.bar": "The bar was built around the idea of drinking locally. Palm wine tapped fresh each afternoon. Zobo brewed in-house. Akpeteshie poured neat or worked into cocktails that taste like somewhere, not just something. We also keep a short list of imported spirits for those who need them.",
+  "restaurant.hours": "{\"weekdays\":\"Tuesday to Friday, 11am – 10pm\",\"weekends\":\"Saturday & Sunday, 9am – 11pm\",\"bar\":\"Bar service until midnight on weekends\"}",
+
+  "contact.address": "Pokrom, Greater Accra Region, Ghana",
+  "contact.whatsapp": "+233 000 000 000",
+  "contact.email": "hello@pokhillsecogarden.com",
+  "contact.hours": "We're reachable by WhatsApp from 8am to 9pm daily. Email responses within 24 hours."
+}

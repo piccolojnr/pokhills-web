@@ -1,54 +1,62 @@
 [
   {
-    "id": 1,
-    "slug": "garden-suite",
-    "name": "Garden Suite",
-    "tagline": "Immersed in green, woken by birdsong",
-    "description": "A spacious suite opening directly onto the garden terrace. Timber beams, hand-thrown pottery, and locally woven textiles create an atmosphere of grounded calm. The private porch is perfect for evening sundowners.",
-    "price_per_night": 350,
-    "currency": "GHS",
-    "capacity": 2,
-    "size_sqm": 45,
-    "amenities": ["King bed", "Private porch", "Garden view", "En-suite bathroom", "Ceiling fan", "Mosquito net", "Minibar", "Free Wi-Fi"],
-    "images": [
-      { "url": "", "alt": "Garden Suite exterior", "is_primary": true },
-      { "url": "", "alt": "Garden Suite interior", "is_primary": false }
-    ],
-    "is_available": true,
-    "sort_order": 1
+    "id": "1",
+    "slug": "the-garden-suite",
+    "name": "The Garden Suite",
+    "tagline": "Spacious, serene, and surrounded by living green",
+    "description": "The Garden Suite is our most generous room — a full retreat within a retreat. Floor-to-ceiling louvred shutters open onto a private terrace where bougainvillea climbs the stone wall and a ceiling fan stirs the warm air. Timber beams, hand-laid mosaic floors, and locally woven textiles give the space a grounded, unhurried quality that invites you to slow down.\n\nThe bathroom is a highlight in itself: a deep soaking tub sits beneath a skylight, and the open-air shower is screened by a garden hedge rather than glass. Breakfast is served on your terrace each morning — you set the time.",
+    "type": "suite",
+    "amenities": ["King bed", "Private terrace", "Garden view", "Soaking tub", "Open-air shower", "Ceiling fan", "Minibar", "Free Wi-Fi"],
+    "images": [],
+    "publicRate": 450,
+    "featured": true
   },
   {
-    "id": 2,
-    "slug": "canopy-room",
-    "name": "Canopy Room",
-    "tagline": "Sleep beneath the forest ceiling",
-    "description": "Elevated on a timber platform, the Canopy Room offers treetop views and unrivalled quiet. A retreat for those who want to truly disconnect.",
-    "price_per_night": 280,
-    "currency": "GHS",
-    "capacity": 2,
-    "size_sqm": 32,
-    "amenities": ["Queen bed", "Treetop view", "En-suite bathroom", "Ceiling fan", "Mosquito net", "Free Wi-Fi"],
-    "images": [
-      { "url": "", "alt": "Canopy Room exterior", "is_primary": true }
-    ],
-    "is_available": true,
-    "sort_order": 2
+    "id": "2",
+    "slug": "the-courtyard-room",
+    "name": "The Courtyard Room",
+    "tagline": "Where every morning begins with birdsong",
+    "description": "Set around our central courtyard, this room has the best seat in the garden — a wide, shaded veranda looking out over the water basin and the mango trees beyond. The room itself is compact and thoughtfully arranged: a handcrafted wooden bed dressed in crisp cotton, a writing desk, and a wardrobe built from reclaimed timber. Nothing unnecessary, nothing missing.\n\nThe en-suite bathroom uses locally fired ceramic tiles and a rainfall showerhead. The courtyard is shared — guests here tend to linger over breakfast and end up chatting until noon.",
+    "type": "standard",
+    "amenities": ["Queen bed", "Shared courtyard access", "Veranda", "Rainfall shower", "Ceiling fan", "Free Wi-Fi"],
+    "images": [],
+    "publicRate": 300,
+    "featured": true
   },
   {
-    "id": 3,
-    "slug": "earth-lodge",
-    "name": "Earth Lodge",
-    "tagline": "Built from the land, for the land",
-    "description": "Constructed with rammed earth walls and a living roof, the Earth Lodge stays naturally cool through Ghana's dry season. The most intimate of our rooms — ideal for solo travellers or couples seeking simplicity.",
-    "price_per_night": 220,
-    "currency": "GHS",
-    "capacity": 2,
-    "size_sqm": 26,
-    "amenities": ["Double bed", "Garden view", "En-suite bathroom", "Ceiling fan", "Mosquito net", "Free Wi-Fi"],
-    "images": [
-      { "url": "", "alt": "Earth Lodge exterior", "is_primary": true }
-    ],
-    "is_available": true,
-    "sort_order": 3
+    "id": "3",
+    "slug": "the-forest-cabin",
+    "name": "The Forest Cabin",
+    "tagline": "Tucked into the tree line, far from everything ordinary",
+    "description": "A ten-minute walk from the main house, the Forest Cabin sits at the edge of the estate where the managed garden gives way to denser bush. The structure is half-open: one wall is a sliding screen that, when drawn back, dissolves the boundary between inside and out. You fall asleep to tree frogs; you wake to light filtering through leaves.\n\nThe cabin has its own small deck with a pair of chairs and a lantern-lit table — ideal for a private dinner arranged by the kitchen. Solar-powered lighting keeps the footprint low and the night sky undisturbed.",
+    "type": "cabin",
+    "amenities": ["King bed", "Private deck", "Forest view", "Outdoor shower", "Solar lighting", "Mosquito net", "Free Wi-Fi"],
+    "images": [],
+    "publicRate": 380,
+    "featured": true
+  },
+  {
+    "id": "4",
+    "slug": "the-canopy-loft",
+    "name": "The Canopy Loft",
+    "tagline": "Elevated living, literally",
+    "description": "The Canopy Loft occupies the upper floor of the original farmhouse, reached by a spiral staircase of wrought iron. The exposed roof trusses and clerestory windows flood the space with light and create a sense of airiness unusual in the tropics. A small reading nook at the far end has a built-in bench and a window that frames the treetops like a painting.\n\nThe bathroom is downstairs — a deliberate choice that makes the loft feel more like a studio than a hotel room. Guests who book here tend to value privacy and altitude above all else.",
+    "type": "deluxe",
+    "amenities": ["King bed", "Treetop view", "Reading nook", "En-suite bathroom", "Ceiling fan", "Mosquito net", "Free Wi-Fi"],
+    "images": [],
+    "publicRate": 420,
+    "featured": false
+  },
+  {
+    "id": "5",
+    "slug": "the-riverside-nook",
+    "name": "The Riverside Nook",
+    "tagline": "Intimate, quiet, and close to the water",
+    "description": "Our smallest room carries a disproportionate amount of charm. The Riverside Nook sits at the bottom of the garden, a few steps from the stream that forms the estate's southern boundary. The walls are thick rammed earth — cool in the heat, warm on harmattan nights — and the room is furnished simply: a good bed, a lamp, a place to put your things.\n\nGuests who choose this room tend to return to it. There is something about the sound of moving water and the quietness of the lower garden that makes everything feel slower and more deliberate. The shared outdoor shower is fed by a solar-heated tank.",
+    "type": "standard",
+    "amenities": ["Double bed", "Stream view", "Shared outdoor shower", "Ceiling fan", "Mosquito net", "Free Wi-Fi"],
+    "images": [],
+    "publicRate": 280,
+    "featured": false
   }
 ]

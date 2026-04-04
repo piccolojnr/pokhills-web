@@ -1,23 +1,25 @@
 /**
- * src/lib/api.ts — auto-selects mock or live implementation.
+ * src/lib/api.ts — single import point for all data access.
  *
  * Pages and components ALWAYS import from here.
  * Never import from api.mock.ts or api.live.ts directly.
  *
- * PUBLIC_API_MODE=demo  → uses local JSON fixtures (api.mock.ts)
- * PUBLIC_API_MODE=live  → uses Laravel API (api.live.ts)
+ * PUBLIC_API_MODE=live  → Laravel API (api.live.ts)
+ * anything else         → local JSON fixtures (api.mock.ts)
  */
 
-import type { Room, MenuResponse, GalleryImage, SiteContent } from './types';
+import type { Room, MenuItem, MenuResponse, GalleryImage, SiteContent, WaitlistEntry, ContactMessage } from './types';
 
-const mode = import.meta.env.PUBLIC_API_MODE ?? 'demo';
+export type { Room, MenuItem, MenuResponse, GalleryImage, SiteContent, WaitlistEntry, ContactMessage };
 
-const impl = mode === 'live'
+const mod = import.meta.env.PUBLIC_API_MODE === 'live'
   ? await import('./api.live')
   : await import('./api.mock');
 
-export const getRooms     = impl.getRooms     as () => Promise<Room[]>;
-export const getRoom      = impl.getRoom      as (slug: string) => Promise<Room>;
-export const getMenu      = impl.getMenu      as () => Promise<MenuResponse>;
-export const getSiteContent = impl.getSiteContent as () => Promise<SiteContent>;
-export const getGallery   = impl.getGallery   as () => Promise<GalleryImage[]>;
+export const getRooms       = mod.getRooms       as () => Promise<Room[]>;
+export const getRoom        = mod.getRoom        as (slug: string) => Promise<Room | null>;
+export const getMenu        = mod.getMenu        as () => Promise<MenuResponse>;
+export const getSiteContent = mod.getSiteContent as () => Promise<SiteContent>;
+export const getGallery     = mod.getGallery     as (category?: string) => Promise<GalleryImage[]>;
+export const submitWaitlist = mod.submitWaitlist as (entry: WaitlistEntry) => Promise<{ success: boolean }>;
+export const submitContact  = mod.submitContact  as (msg: ContactMessage) => Promise<{ success: boolean }>;
