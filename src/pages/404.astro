@@ -1,0 +1,120 @@
+---
+import Base from "@/components/layout/Base.astro";
+import OganicDivider from "@/components/shared/OganicDivider.astro";
+---
+
+<Base
+  title="Page not found"
+  description="This page couldn't be found — but there's plenty more to explore at Pokhills Eco Garden."
+>
+  <!-- Hero area -->
+  <section
+    class="hero-404 relative flex flex-col items-center justify-center min-h-[80vh] bg-green-deep overflow-hidden px-6 text-center"
+  >
+    <!-- Texture overlay -->
+    <div
+      class="texture absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+    >
+    </div>
+
+    <!-- Decorative large number -->
+    <span
+      class="absolute font-display font-medium text-cream/[0.04] select-none pointer-events-none"
+      style="font-size: clamp(160px, 30vw, 320px); line-height: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      aria-hidden="true"
+    >
+      404
+    </span>
+
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col items-center gap-7 max-w-xl">
+      <span
+        class="font-body text-[10px] uppercase tracking-[0.22em] text-ochre border border-ochre/40 px-5 py-2 rounded-sm"
+      >
+        Lost in the garden
+      </span>
+
+      <h1
+        class="font-display font-normal text-[40px] md:text-[52px] leading-[1.1] text-cream"
+      >
+        We couldn't find<br />
+        <em class="italic text-stone">this corner</em>
+      </h1>
+
+      <p class="font-body text-sm text-stone/80 leading-relaxed max-w-sm">
+        The page you're looking for has wandered off. Perhaps it was never here,
+        or the path has changed. Either way — the rest of the estate is waiting.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center mt-2">
+        <a
+          href="/"
+          class="font-body text-[11px] uppercase tracking-[0.14em] text-cream bg-ochre px-8 py-3.5 rounded-sm transition-colors duration-200 hover:bg-ochre-light"
+        >
+          Back to home
+        </a>
+        <a
+          href="/rooms"
+          class="font-body text-[11px] uppercase tracking-[0.14em] text-cream border border-cream/30 px-8 py-3.5 rounded-sm transition-colors duration-200 hover:border-cream/60 hover:bg-white/5"
+        >
+          Explore rooms
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <OganicDivider fill="#F5F0E8" />
+
+  <!-- Quick links -->
+  <section class="bg-cream py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+      <p
+        class="font-body text-[10px] uppercase tracking-[0.2em] text-ochre text-center mb-10"
+      >
+        Or find your way from here
+      </p>
+      <nav
+        class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-stone/20"
+        aria-label="Site navigation"
+      >
+        {
+          [
+            { label: "Rooms", href: "/rooms", sub: "Where you'll stay" },
+            {
+              label: "Restaurant",
+              href: "/restaurant",
+              sub: "Pokrom Garden Bar",
+            },
+            { label: "Menu", href: "/menu", sub: "Food & drink" },
+            { label: "Gallery", href: "/gallery", sub: "Photography" },
+            { label: "About", href: "/about", sub: "Our story" },
+            { label: "Contact", href: "/contact", sub: "Get in touch" },
+          ].map(({ label, href, sub }) => (
+            <a
+              href={href}
+              class="group flex flex-col gap-1 bg-cream px-6 py-6 transition-colors duration-150 hover:bg-earth/40"
+            >
+              <span class="font-display text-lg text-bark group-hover:text-green-deep transition-colors duration-150">
+                {label}
+              </span>
+              <span class="font-body text-[11px] text-muted">{sub}</span>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .texture {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+</style>
