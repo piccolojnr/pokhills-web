@@ -1,14 +1,57 @@
 ---
-import Base from "@/components/layout/Base.astro";
-import Welcome from "../components/Welcome.astro";
+import Base from '@/components/layout/Base.astro';
+import Hero from '@/components/home/Hero.astro';
+import StatStrip from '@/components/home/StatStrip.astro';
+import ExperiencePanel from '@/components/home/ExperiencePanel.astro';
+import RoomTeaser from '@/components/home/RoomTeaser.astro';
+import ComingSoonBanner from '@/components/home/ComingSoonBanner.astro';
+import SectionLabel from '@/components/shared/SectionLabel.astro';
+import OganicDivider from '@/components/shared/OganicDivider.astro';
+import { getRooms, getSiteContent } from '@/lib/api';
+import { getContent } from '@/lib/utils';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const rooms = await getRooms();
+const featuredRooms = rooms.filter(r => r.featured).slice(0, 3);
+const content = await getSiteContent();
 ---
 
 <Base
-  title="Welcome to Astro"
-  description="Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need to get up and running quickly."
+  title="Home"
+  description={getContent(content, 'hero.subline', 'A boutique eco-retreat and garden bar in Pokrom, Ghana.')}
 >
-  <Welcome />
+  <!-- 1. Hero -->
+  <Hero
+    tagline={getContent(content, 'hero.tagline', 'Where the forest breathes')}
+    subline={getContent(content, 'hero.subline', 'A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.')}
+  />
+
+  <!-- 2. Stat Strip -->
+  <StatStrip roomCount={rooms.length} />
+
+  <!-- 3. Estate Intro -->
+  <section class="bg-cream px-6 pt-24 pb-0 text-center">
+    <div class="max-w-2xl mx-auto flex flex-col items-center gap-6">
+      <SectionLabel text="The estate" />
+      <h2 class="font-display font-normal text-[38px] leading-[1.15] text-bark">
+        A garden that does two things well
+      </h2>
+      <div class="w-12 h-[2px] bg-ochre rounded-none"></div>
+      <p class="font-body text-base text-muted leading-relaxed">
+        {getContent(content, 'about.intro')}
+      </p>
+    </div>
+    <!-- Flows into the dark two-panel section -->
+    <div class="mt-20">
+      <OganicDivider fill="#1A1A14" />
+    </div>
+  </section>
+
+  <!-- 4. Two Experience Panels -->
+  <ExperiencePanel />
+
+  <!-- 5. Room Teaser -->
+  <RoomTeaser rooms={featuredRooms} />
+
+  <!-- 6. Coming Soon Banner -->
+  <ComingSoonBanner />
 </Base>

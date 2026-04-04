@@ -1,0 +1,44 @@
+---
+import type { Room } from '@/lib/types';
+import SectionLabel from '../shared/SectionLabel.astro';
+import RoomCard from '../rooms/RoomCard.astro';
+import OganicDivider from '../shared/OganicDivider.astro';
+
+interface Props {
+  rooms: Room[];
+}
+
+const { rooms } = Astro.props;
+---
+
+<section class="bg-cream py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="flex items-end justify-between mb-10 gap-4">
+      <div class="flex flex-col gap-3">
+        <SectionLabel text="Where you'll stay" />
+        <h2 class="font-display text-[38px] md:text-[42px] font-normal text-bark leading-[1.1]">
+          The rooms
+        </h2>
+      </div>
+      <a
+        href="/rooms"
+        class="font-body text-sm text-ochre hover:text-ochre-light transition-colors duration-150 whitespace-nowrap mb-1"
+      >
+        View all rooms →
+      </a>
+    </div>
+
+    <!-- Room grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {rooms.map(room => (
+        <RoomCard room={room} />
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Flows into the dark ComingSoonBanner -->
+<OganicDivider fill="#2D4A2D" />

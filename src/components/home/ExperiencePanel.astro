@@ -1,0 +1,56 @@
+---
+import SectionLabel from '../shared/SectionLabel.astro';
+import PlaceholderImage from '../shared/PlaceholderImage.astro';
+---
+
+<section class="grid grid-cols-1 md:grid-cols-2">
+
+  <!-- LEFT — Stay -->
+  <div class="bg-green-deep flex flex-col">
+    <PlaceholderImage
+      tone="green"
+      aspect="16/9"
+      label="Room photography coming soon"
+    />
+    <div class="flex flex-col gap-4 p-10">
+      <SectionLabel text="Pokhills Eco Garden Stay" color="stone" />
+      <h3 class="font-display text-[32px] font-normal leading-[1.15] text-cream">
+        Rest in the garden
+      </h3>
+      <p class="font-body font-light text-sm text-stone leading-relaxed">
+        Five boutique rooms tucked into twelve acres of managed forest. Each one designed to reconnect you with the land — waking up to birdsong, sleeping beneath timber beams, spending the morning on your private terrace with no particular agenda.
+      </p>
+      <a
+        href="/rooms"
+        class="inline-block font-body text-sm text-ochre underline underline-offset-4 decoration-ochre/40 hover:decoration-ochre transition-all duration-150 w-fit"
+      >
+        Explore rooms →
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT — Bar -->
+  <div class="bg-bark flex flex-col">
+    <PlaceholderImage
+      tone="ochre"
+      aspect="16/9"
+      label="Bar photography coming soon"
+    />
+    <div class="flex flex-col gap-4 p-10">
+      <SectionLabel text="Pokrom Garden Bar" color="stone" />
+      <h3 class="font-display text-[32px] font-normal leading-[1.15] text-cream">
+        Eat, drink, linger
+      </h3>
+      <p class="font-body font-light text-sm text-stone leading-relaxed">
+        Open to guests and the wider community alike. Seasonal Ghanaian food cooked over charcoal, cocktails made with local spirits, and a terrace that catches the evening breeze off the ridge. Come for dinner. Stay until the bar closes.
+      </p>
+      <a
+        href="/menu"
+        class="inline-block font-body text-sm text-ochre underline underline-offset-4 decoration-ochre/40 hover:decoration-ochre transition-all duration-150 w-fit"
+      >
+        View menu →
+      </a>
+    </div>
+  </div>
+
+</section>
