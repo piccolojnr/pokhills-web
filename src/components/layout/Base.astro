@@ -101,8 +101,8 @@ const ogImageURL = new URL(ogImage, Astro.site);
       import '@/scripts/reveal';
     </script>
     {import.meta.env.DEV && import.meta.env.PUBLIC_API_MODE === 'demo' && (
-      <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;height:40px;display:flex;align-items:center;justify-content:center;background:#3D2B1A;color:#B8A898;font-family:system-ui,sans-serif;font-size:12px;letter-spacing:0.04em;">
-        Demo mode — using mock data. Set <code style="margin:0 6px;background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">PUBLIC_API_MODE=live</code> to connect to the API.
+      <div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:4px 12px;display:flex;align-items:center;justify-content:center;background:#3D2B1A;color:#B8A898;font-family:system-ui,sans-serif;font-size:10px;letter-spacing:0.05em;opacity:0.85;">
+        Demo mode &mdash; mock data &middot; set <code style="margin:0 4px;font-size:10px;">PUBLIC_API_MODE=live</code> for real API
       </div>
     )}
   </body>
