@@ -1,0 +1,121 @@
+---
+import Base from '@/components/layout/Base.astro';
+import SectionLabel from '@/components/shared/SectionLabel.astro';
+import MenuCategory from '@/components/menu/MenuCategory.astro';
+import { getMenu } from '@/lib/api';
+import { slugify } from '@/lib/utils';
+
+const menu = await getMenu();
+const categories = Object.keys(menu);
+
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000';
+const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hi! I'd like to ask about today's specials at Pokrom Garden Bar.")}`;
+
+// Alternate section backgrounds
+const bgClasses = ['bg-cream', 'bg-stone'];
+---
+
+<Base
+  title="Menu — Pokrom Garden Bar"
+  description="The Pokrom Garden Bar menu — fresh, honest food and drinks rooted in local Ghanaian flavour."
+>
+
+  <!-- 1. Page hero -->
+  <section class="relative flex flex-col items-center justify-center min-h-[30vh] bg-bark overflow-hidden px-6 text-center">
+    <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative z-10 flex flex-col items-center gap-4 py-16">
+      <SectionLabel text="Pokrom Garden Bar" color="ochre" />
+      <h1 class="font-display font-normal text-[40px] md:text-[44px] leading-[1.1] text-cream">
+        The menu
+      </h1>
+      <p class="font-display italic text-[17px] text-stone/80">
+        Fresh, honest, rooted in local flavour
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Sticky category nav -->
+  <div id="category-nav" class="sticky top-0 z-10 bg-cream border-b border-stone/20 overflow-x-auto">
+    <nav class="flex items-stretch max-w-4xl mx-auto px-6" aria-label="Menu categories">
+      {categories.map(category => (
+        <a
+          href={`#category-${slugify(category)}`}
+          data-category={slugify(category)}
+          class="category-link font-body text-[11px] uppercase tracking-[0.14em] text-muted px-4 py-4 whitespace-nowrap border-b-2 border-transparent transition-colors duration-150 hover:text-ochre"
+        >
+          {category}
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <!-- 3. Menu sections -->
+  {categories.map((category, i) => (
+    <div class={bgClasses[i % 2]}>
+      <MenuCategory
+        category={category}
+        items={menu[category]}
+        id={`category-${slugify(category)}`}
+      />
+    </div>
+  ))}
+
+  <!-- 4. Bottom note -->
+  <section class="bg-cream py-16 px-6 text-center border-t border-stone/20">
+    <p class="font-display italic text-[13px] text-stone leading-relaxed">
+      Prices in GHS. Menu and availability subject to change.
+    </p>
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.14em] text-ochre mt-5 hover:text-ochre-light transition-colors duration-150"
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+      </svg>
+      Ask about today's specials
+    </a>
+  </section>
+
+</Base>
+
+<style>
+  .texture {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+
+  .category-link.is-active {
+    color: var(--color-ochre);
+    border-bottom-color: var(--color-ochre);
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.category-link');
+  const sections = document.querySelectorAll<HTMLElement>('[id^="category-"]');
+
+  const navHeight = (document.getElementById('category-nav')?.offsetHeight ?? 56) + 4;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const id = entry.target.id.replace('category-', '');
+          links.forEach(link => {
+            link.classList.toggle('is-active', link.dataset.category === id);
+          });
+        }
+      }
+    },
+    { rootMargin: `-${navHeight}px 0px -60% 0px`, threshold: 0 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+</script>

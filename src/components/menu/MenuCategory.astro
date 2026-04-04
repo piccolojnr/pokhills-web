@@ -1,0 +1,39 @@
+---
+import type { MenuItem as MenuItemType } from '@/lib/types';
+import MenuItem from './MenuItem.astro';
+
+interface Props {
+  category: string;
+  items: MenuItemType[];
+  id: string;
+}
+
+const { category, items, id } = Astro.props;
+
+// Featured items first
+const sorted = [
+  ...items.filter(i => i.featured),
+  ...items.filter(i => !i.featured),
+];
+---
+
+<section {id} class="scroll-mt-14 px-6 py-16">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Heading -->
+    <div class="mb-8">
+      <h2 class="font-display font-normal text-[32px] text-bark leading-tight">
+        {category}
+      </h2>
+      <div class="w-8 h-0.5 bg-ochre mt-3"></div>
+    </div>
+
+    <!-- Items grid: 1-col mobile, 2-col desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+      {sorted.map(item => (
+        <MenuItem item={item} />
+      ))}
+    </div>
+
+  </div>
+</section>
