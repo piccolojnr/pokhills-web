@@ -1,0 +1,215 @@
+---
+import Base from '@/components/layout/Base.astro';
+import SectionLabel from '@/components/shared/SectionLabel.astro';
+import ContactForm from '@/components/forms/ContactForm';
+import { getSiteContent } from '@/lib/api';
+import { getContent } from '@/lib/utils';
+
+const content = await getSiteContent();
+
+const address   = getContent(content, 'contact.address', 'Pokrom, Greater Accra Region, Ghana');
+const email     = getContent(content, 'contact.email', 'hello@pokhillsecogarden.com');
+const hours     = getContent(content, 'contact.hours', '');
+const whatsapp  = import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000';
+const mapsKey   = import.meta.env.PUBLIC_GOOGLE_MAPS_KEY ?? '';
+const waHref    = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
+const mapsQuery = encodeURIComponent(address);
+const mapsLink  = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+---
+
+<Base
+  title="Contact — Pokhills Eco Garden"
+  description={`Find Pokhills Eco Garden in ${address}. Get in touch via WhatsApp, phone, or email.`}
+>
+
+  <!-- 1. Hero -->
+  <section class="relative flex flex-col items-center justify-center min-h-[30vh] bg-bark overflow-hidden px-6 text-center">
+    <div class="texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative z-10 flex flex-col items-center gap-4 py-16">
+      <SectionLabel text="Come and find us" color="ochre" />
+      <h1 class="font-display font-normal text-[40px] md:text-[46px] leading-[1.1] text-cream">
+        Find us
+      </h1>
+      <p class="font-display italic text-[17px] text-stone/80">
+        {address}
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Map + contact details -->
+  <section class="bg-cream py-16 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-start">
+
+      <!-- Map -->
+      <div>
+        {mapsKey ? (
+          <iframe
+            title="Pokhills Eco Garden location"
+            src={`https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${mapsQuery}`}
+            width="100%"
+            height="380"
+            style="border: 1px solid var(--color-stone); border-radius: 2px;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          />
+        ) : (
+          <!-- No API key: styled placeholder with direct link -->
+          <div
+            class="w-full flex flex-col items-center justify-center gap-4 text-center border border-stone/30 rounded-sm bg-stone/20"
+            style="height: 380px;"
+          >
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" class="text-ochre/60" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <div>
+              <p class="font-body text-[13px] text-muted">{address}</p>
+            </div>
+            <a
+              href={mapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-[11px] uppercase tracking-[0.14em] text-ochre border border-ochre px-5 py-2.5 rounded-sm hover:bg-ochre hover:text-cream transition-colors duration-150"
+            >
+              Open in Google Maps
+            </a>
+          </div>
+        )}
+      </div>
+
+      <!-- Contact details -->
+      <div class="flex flex-col gap-8">
+
+        <!-- Get in touch -->
+        <div>
+          <h3 class="font-display font-normal text-[24px] text-bark leading-tight mb-5">
+            Get in touch
+          </h3>
+          <ul class="flex flex-col gap-4">
+
+            <!-- WhatsApp -->
+            <li>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 text-ochre hover:text-ochre-light transition-colors duration-150 group"
+              >
+                <span class="shrink-0 w-10 h-10 rounded-full bg-ochre/10 flex items-center justify-center group-hover:bg-ochre/20 transition-colors duration-150">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+                  </svg>
+                </span>
+                <span>
+                  <span class="block font-body font-medium text-[14px] leading-snug">Chat on WhatsApp</span>
+                  <span class="block font-body text-[12px] text-muted mt-0.5">{whatsapp}</span>
+                </span>
+              </a>
+            </li>
+
+            <!-- Email -->
+            <li class="flex items-center gap-3">
+              <span class="shrink-0 w-10 h-10 rounded-full bg-stone/30 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-muted" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="block font-body text-[11px] uppercase tracking-[0.12em] text-muted mb-0.5">Email</span>
+                <a
+                  href={`mailto:${email}`}
+                  class="font-body text-[14px] text-bark hover:text-ochre transition-colors duration-150"
+                >
+                  {email}
+                </a>
+              </span>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-stone/30"></div>
+
+        <!-- Opening hours -->
+        {hours && (
+          <div>
+            <h3 class="font-display font-normal text-[24px] text-bark leading-tight mb-4">
+              Hours
+            </h3>
+            <p class="font-body font-light text-[13px] text-muted leading-relaxed">
+              {hours}
+            </p>
+          </div>
+        )}
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-stone/30"></div>
+
+        <!-- Follow us -->
+        <div>
+          <h3 class="font-display font-normal text-[24px] text-bark leading-tight mb-4">
+            Follow us
+          </h3>
+          <div class="flex items-center gap-4">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/pokhillsecogarden"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-stone/30 flex items-center justify-center text-muted hover:text-ochre hover:bg-ochre/10 transition-colors duration-150"
+              aria-label="Instagram"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <!-- Facebook -->
+            <a
+              href="https://facebook.com/pokhillsecogarden"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-stone/30 flex items-center justify-center text-muted hover:text-ochre hover:bg-ochre/10 transition-colors duration-150"
+              aria-label="Facebook"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Contact form -->
+  <section class="bg-stone py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <SectionLabel text="Write to us" color="ochre" />
+        <h3 class="font-display font-normal text-[28px] text-bark leading-tight mt-3">
+          Send us a message
+        </h3>
+      </div>
+      <ContactForm client:load />
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .texture {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+</style>
