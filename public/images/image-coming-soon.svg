@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Image coming soon">
+  <defs>
+    <pattern id="comingSoonStripes" patternUnits="userSpaceOnUse" width="14" height="14" patternTransform="rotate(-45)">
+      <rect width="1" height="14" fill="rgba(255,255,255,0.035)"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" rx="8" fill="#2A1F08"/>
+  <rect width="400" height="300" rx="8" fill="url(#comingSoonStripes)"/>
+  <circle cx="200" cy="132" r="34" stroke="rgba(216,195,154,0.42)" stroke-width="2"/>
+  <path d="M200 116V134L214 144" stroke="rgba(226,210,178,0.68)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="210" text-anchor="middle" fill="rgba(226,210,178,0.72)" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="3.2">
+    COMING SOON
+  </text>
+</svg>

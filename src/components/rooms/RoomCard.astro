@@ -1,7 +1,7 @@
 ---
-import type { Room } from '@/lib/types';
-import PlaceholderImage from '../shared/PlaceholderImage.astro';
-import { formatGHS } from '@/lib/utils';
+import type { Room } from "@/lib/types";
+import SmartImage from "../shared/SmartImage.astro";
+import { formatGHS } from "@/lib/utils";
 
 interface Props {
   room: Room;
@@ -9,11 +9,11 @@ interface Props {
 
 const { room } = Astro.props;
 
-const typeLabel: Record<Room['type'], string> = {
-  suite:    'Suite',
-  standard: 'Standard',
-  cabin:    'Cabin',
-  deluxe:   'Deluxe',
+const typeLabel: Record<Room["type"], string> = {
+  suite: "Suite",
+  standard: "Standard",
+  cabin: "Cabin",
+  deluxe: "Deluxe",
 };
 
 const visibleAmenities = room.amenities.slice(0, 3);
@@ -27,56 +27,72 @@ const extraCount = room.amenities.length - 3;
 >
   <!-- Image area -->
   <div class="relative">
-    {room.images.length > 0 ? (
-      <img
-        src={room.images[0]}
-        alt={room.name}
-        class="w-full aspect-[3/2] object-cover"
-        loading="lazy"
-      />
-    ) : (
-      <PlaceholderImage tone="green" aspect="3/2" label="Room photography coming soon" />
-    )}
+    <SmartImage
+      src={room.images[0]}
+      alt={room.name}
+      class="w-full aspect-3/2 object-cover"
+      loading="lazy"
+    />
 
     <!-- Type badge — top left -->
-    <span class="absolute top-3 left-3 font-body text-[9px] uppercase tracking-[0.14em] bg-green-deep text-stone px-2.5 py-1 rounded-sm">
+    <span
+      class="absolute top-3 left-3 font-body text-[9px] uppercase tracking-[0.14em] bg-green-deep text-stone px-2.5 py-1 rounded-sm"
+    >
       {typeLabel[room.type]}
     </span>
 
     <!-- Featured badge — top right -->
-    {room.featured && (
-      <span class="absolute top-3 right-3 font-body text-[9px] uppercase tracking-[0.14em] bg-ochre text-cream px-2.5 py-1 rounded-sm">
-        Featured
-      </span>
-    )}
+    {
+      room.featured && (
+        <span class="absolute top-3 right-3 font-body text-[9px] uppercase tracking-[0.14em] bg-ochre text-cream px-2.5 py-1 rounded-sm">
+          Featured
+        </span>
+      )
+    }
   </div>
 
   <!-- Card body -->
   <div class="p-4 flex flex-col gap-3">
     <div>
-      <h4 class="font-display text-[20px] font-normal text-bark leading-tight">{room.name}</h4>
-      <p class="font-body font-light text-[13px] text-stone mt-1 leading-snug">{room.tagline}</p>
+      <h4 class="font-display text-[20px] font-normal text-bark leading-tight">
+        {room.name}
+      </h4>
+      <p class="font-body font-light text-[13px] text-stone mt-1 leading-snug">
+        {room.tagline}
+      </p>
     </div>
 
     <!-- Amenity pills -->
     <div class="flex flex-wrap gap-1.5">
-      {visibleAmenities.map(a => (
-        <span class="font-body text-[10px] text-stone border border-stone/40 px-2 py-0.5 rounded-sm leading-tight">
-          {a}
-        </span>
-      ))}
-      {extraCount > 0 && (
-        <span class="font-body text-[10px] text-muted self-center">+{extraCount} more</span>
-      )}
+      {
+        visibleAmenities.map((a) => (
+          <span class="font-body text-[10px] text-stone border border-stone/40 px-2 py-0.5 rounded-sm leading-tight">
+            {a}
+          </span>
+        ))
+      }
+      {
+        extraCount > 0 && (
+          <span class="font-body text-[10px] text-muted self-center">
+            +{extraCount} more
+          </span>
+        )
+      }
     </div>
 
     <!-- Footer: rate + CTA -->
-    <div class="flex items-center justify-between pt-3 border-t border-stone/20 mt-1">
+    <div
+      class="flex items-center justify-between pt-3 border-t border-stone/20 mt-1"
+    >
       <span class="font-display text-base text-bark leading-none">
         {formatGHS(room.publicRate)}
-        <span class="font-body text-[11px] text-muted font-normal"> / night</span>
+        <span class="font-body text-[11px] text-muted font-normal">
+          / night</span
+        >
       </span>
-      <span class="font-body text-[10px] uppercase tracking-[0.12em] text-ochre border border-ochre px-3 py-1.5 rounded-sm transition-all duration-150 group-hover:bg-ochre group-hover:text-cream">
+      <span
+        class="font-body text-[10px] uppercase tracking-[0.12em] text-ochre border border-ochre px-3 py-1.5 rounded-sm transition-all duration-150 group-hover:bg-ochre group-hover:text-cream"
+      >
         View room
       </span>
     </div>

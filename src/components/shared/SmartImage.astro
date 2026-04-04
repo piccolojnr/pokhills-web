@@ -1,0 +1,39 @@
+---
+interface Props {
+  src?: string;
+  alt?: string;
+  class?: string;
+  width?: number | string;
+  height?: number | string;
+  loading?: "lazy" | "eager";
+  decoding?: "auto" | "async" | "sync";
+  noImageFallbackSrc?: string;
+  imageComingSoonFallbackSrc?: string;
+}
+
+const {
+  src = "",
+  alt = "",
+  class: className = "",
+  width,
+  height,
+  loading = "lazy",
+  decoding = "async",
+  noImageFallbackSrc = "/images/no-image.svg",
+  imageComingSoonFallbackSrc = "/images/image-coming-soon.svg",
+} = Astro.props;
+
+const initialSrc = src?.trim() ? src : imageComingSoonFallbackSrc;
+---
+
+<img
+  src={initialSrc}
+  alt={alt}
+  class={className}
+  width={width}
+  height={height}
+  loading={loading}
+  decoding={decoding}
+  data-fallback-src={noImageFallbackSrc}
+  onerror="if(this.dataset.fallbackApplied==='true') return; this.dataset.fallbackApplied='true'; this.src=this.dataset.fallbackSrc;"
+/>
