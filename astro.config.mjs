@@ -1,5 +1,20 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
+import vercel from '@astrojs/vercel';
+
+export default defineConfig({
+  output: 'static',
+  site: 'https://pokhillsecogarden.com',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
+  integrations: [react()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});

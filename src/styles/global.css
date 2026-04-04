@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+/* ─── Pokhills Design Tokens (Tailwind v4 @theme) ─────────────────────────── */
+@theme {
+  /* Colors */
+  --color-green-deep: #2D4A2D;
+  --color-green-leaf: #5C7A3E;
+  --color-ochre: #8B6914;
+  --color-ochre-light: #C4A04A;
+  --color-cream: #F5F0E8;
+  --color-stone: #C4B49A;
+  --color-bark: #1A1A14;
+  --color-earth: #D4CCBE;
+  --color-muted: #5F5E5A;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* Border radius — rustic, never pill-shaped */
+  --radius-none: 0px;
+  --radius-sm: 1px;
+  --radius: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+}
+
+/* ─── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --ph-green-deep: #2D4A2D;
+  --ph-green-leaf: #5C7A3E;
+  --ph-ochre: #8B6914;
+  --ph-ochre-light: #C4A04A;
+  --ph-cream: #F5F0E8;
+  --ph-stone: #C4B49A;
+  --ph-bark: #1A1A14;
+  --ph-earth: #D4CCBE;
+  --ph-muted: #5F5E5A;
+
+  --ph-font-display: 'Cormorant Garamond', Georgia, serif;
+  --ph-font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--ph-cream);
+    color: var(--ph-bark);
+    font-family: var(--ph-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ph-font-display);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ph-bark);
+    margin: 0;
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+  h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1rem; }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  /* Never pure white — use cream or stone */
+  :is(input, textarea, select) {
+    background-color: var(--ph-cream);
+    border: 1px solid var(--ph-stone);
+    font-family: var(--ph-font-body);
+    color: var(--ph-bark);
+  }
+}

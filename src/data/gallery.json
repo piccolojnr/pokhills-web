@@ -1,0 +1,8 @@
+[
+  { "id": 1, "url": "", "alt": "Pokrom Garden Bar at dusk", "caption": "The bar at golden hour", "category": "restaurant", "sort_order": 1 },
+  { "id": 2, "url": "", "alt": "Garden Suite porch", "caption": null, "category": "rooms", "sort_order": 2 },
+  { "id": 3, "url": "", "alt": "Aerial view of the gardens", "caption": "12 acres of managed eco-garden", "category": "garden", "sort_order": 3 },
+  { "id": 4, "url": "", "alt": "Grilled tilapia dish", "caption": null, "category": "restaurant", "sort_order": 4 },
+  { "id": 5, "url": "", "alt": "Canopy Room interior", "caption": null, "category": "rooms", "sort_order": 5 },
+  { "id": 6, "url": "", "alt": "Earth Lodge exterior", "caption": null, "category": "rooms", "sort_order": 6 }
+]

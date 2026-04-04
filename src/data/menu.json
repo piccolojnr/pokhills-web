@@ -1,0 +1,121 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "slug": "small-plates",
+      "name": "Small Plates",
+      "description": "Snacks and sharing plates — the way we like to eat",
+      "sort_order": 1,
+      "items": [
+        {
+          "id": 1,
+          "name": "Kelewele",
+          "description": "Spiced fried plantain with groundnut dip",
+          "price": 35,
+          "currency": "GHS",
+          "tags": ["vegan", "signature"],
+          "is_available": true,
+          "sort_order": 1
+        },
+        {
+          "id": 2,
+          "name": "Garden Salad",
+          "description": "Seasonal leaves, tomato, cucumber, lime dressing",
+          "price": 45,
+          "currency": "GHS",
+          "tags": ["vegan", "gluten-free"],
+          "is_available": true,
+          "sort_order": 2
+        },
+        {
+          "id": 3,
+          "name": "Grilled Yam Fries",
+          "description": "With shito aioli",
+          "price": 40,
+          "currency": "GHS",
+          "tags": ["vegan"],
+          "is_available": true,
+          "sort_order": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "mains",
+      "name": "Mains",
+      "description": null,
+      "sort_order": 2,
+      "items": [
+        {
+          "id": 4,
+          "name": "Grilled Tilapia",
+          "description": "Whole fish, banku, tomato stew, garden greens",
+          "price": 120,
+          "currency": "GHS",
+          "tags": ["gluten-free", "signature"],
+          "is_available": true,
+          "sort_order": 1
+        },
+        {
+          "id": 5,
+          "name": "Jollof Rice",
+          "description": "Smoky party jollof, fried chicken, coleslaw",
+          "price": 95,
+          "currency": "GHS",
+          "tags": ["signature"],
+          "is_available": true,
+          "sort_order": 2
+        },
+        {
+          "id": 6,
+          "name": "Forest Mushroom Stew",
+          "description": "Wild mushrooms, palm oil base, served with kenkey",
+          "price": 85,
+          "currency": "GHS",
+          "tags": ["vegan"],
+          "is_available": true,
+          "sort_order": 3
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "drinks",
+      "name": "Drinks",
+      "description": "Fresh, local, and lovingly made",
+      "sort_order": 3,
+      "items": [
+        {
+          "id": 7,
+          "name": "Pokrom Garden Punch",
+          "description": "Hibiscus, ginger, lime, sparkling water",
+          "price": 30,
+          "currency": "GHS",
+          "tags": ["signature", "non-alcoholic"],
+          "is_available": true,
+          "sort_order": 1
+        },
+        {
+          "id": 8,
+          "name": "Fresh Coconut",
+          "description": "Chilled, served whole",
+          "price": 20,
+          "currency": "GHS",
+          "tags": ["vegan", "non-alcoholic"],
+          "is_available": true,
+          "sort_order": 2
+        },
+        {
+          "id": 9,
+          "name": "Local Craft Beer",
+          "description": "Rotating selection from Ghanaian breweries",
+          "price": 35,
+          "currency": "GHS",
+          "tags": [],
+          "is_available": true,
+          "sort_order": 3
+        }
+      ]
+    }
+  ]
+}
