@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(pnpm add:*)",
-      "Bash(pnpm astro:*)"
+      "Bash(pnpm astro:*)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/USER/projects/banass consult/pokhills-web/**)",
+      "Bash(done)",
+      "Bash(do)",
+      "Bash(echo \"=== $f ===\")",
+      "Bash(git add *)",
+      "Bash(git commit -m *",
+      "Bash(git push)"
     ]
   }
 }
