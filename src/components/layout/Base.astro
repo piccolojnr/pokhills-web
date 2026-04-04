@@ -8,16 +8,23 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "A boutique eco-retreat and garden bar in Pokrom, Ghana.",
+  description = "Pokhills Eco Garden — a boutique stay and garden bar in Ghana. Pokrom Garden Bar and Pokhills Eco Garden Stay.",
   ogImage = "/og-default.jpg",
+  canonical,
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = `${title} — Pokhills Eco Garden`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = canonical
+  ? new URL(canonical, Astro.site)
+  : new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -27,6 +34,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
 
+    <!-- Robots -->
+    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+
     <!-- SEO -->
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -35,7 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Pokhills Eco Garden" />
 
@@ -43,42 +53,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Theme colour -->
+    <meta name="theme-color" content="#2D4A2D" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Font preloads — Cormorant Garamond -->
-    <link
-      rel="preload"
-      href="/fonts/CormorantGaramond-Regular.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/CormorantGaramond-Medium.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
+    <!-- Font preloads — Cormorant Garamond (above-the-fold weights) -->
+    <link rel="preload" href="/fonts/CormorantGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/CormorantGaramond-Italic.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/CormorantGaramond-Medium.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/CormorantGaramond-MediumItalic.ttf" as="font" type="font/ttf" crossorigin />
+
     <!-- Font preloads — DM Sans -->
-    <link
-      rel="preload"
-      href="/fonts/DMSans-Regular.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/DMSans-Medium.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
+    <link rel="preload" href="/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin />
+
+    <!-- Critical inline CSS — prevents FOUC on hero text before fonts load -->
+    <style>
+      :root {
+        --font-display: 'Cormorant Garamond', Georgia, serif;
+        --font-body: 'DM Sans', system-ui, sans-serif;
+      }
+      body {
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        font-weight: 400;
+      }
+    </style>
   </head>
   <body>
     <Nav />
