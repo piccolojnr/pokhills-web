@@ -7,7 +7,7 @@ import { getContent } from '@/lib/utils';
 
 const content = await getSiteContent();
 
-const address   = getContent(content, 'contact.address', 'Pokrom, Greater Accra Region, Ghana');
+const address   = getContent(content, 'contact.address', 'Pokrom, Eastern Region, Ghana');
 const email     = getContent(content, 'contact.email', 'hello@pokhillsecogarden.com');
 const hours     = getContent(content, 'contact.hours', '');
 const whatsapp  = import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000';

@@ -98,9 +98,9 @@ Default Open Graph image shown when sharing any page on social media.
 - **Content:** Deep green (`#2D4A2D`) background, Pokhills Eco Garden logotype centred
 - **Format:** JPEG, optimised (~150–200KB)
 
-### `/public/favicon.svg`
+### `/public/brand/`
 
-SVG favicon using the brand mark on a transparent or deep green background.
+Web-ready logo and favicon assets generated from the supplied Pokhills Eco Garden artwork.
 
 ---
 

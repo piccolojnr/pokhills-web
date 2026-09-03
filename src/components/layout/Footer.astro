@@ -10,13 +10,12 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
     <div class="flex flex-col gap-3">
       <a href="/" class="flex items-center gap-2.5 leading-none" aria-label="Pokhills Eco Garden">
         <img
-          src="/logo.svg"
-          alt=""
-          aria-hidden="true"
+          src="/brand/pokhills-logo-transparent.png"
+          alt="Pokhills Eco Garden logo"
           width="40"
           height="40"
           class="h-10 w-auto flex-shrink-0"
-          style="filter: brightness(0) invert(1) opacity(0.85);"
+          class="h-10 w-10 rounded-full object-cover flex-shrink-0"
         />
         <span class="font-display font-medium text-xl text-cream tracking-[0.02em]">Pokhills</span
         ><span class="font-display font-normal italic text-xl text-stone tracking-[0.02em]"> Eco Garden</span>
@@ -70,7 +69,7 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
     <div class="flex flex-col gap-3">
       <p class="text-[10px] font-normal uppercase tracking-[0.2em] text-ochre mb-1">Find us</p>
       <address class="not-italic flex flex-col gap-3 text-sm leading-relaxed">
-        <p>Pokrom, Greater Accra Region<br />Ghana</p>
+        <p>Pokrom, Eastern Region<br />Ghana</p>
         <p class="text-muted">Tue – Fri 11am – 10pm<br />Sat – Sun 9am – 11pm</p>
         <a
           href={waHref}
@@ -90,6 +89,6 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 
   <!-- Bottom bar -->
   <div class="border-t border-[#2A2A22] py-5 px-6 text-center">
-    <p class="text-[11px] text-muted tracking-[0.04em]">© 2025 Pokhills Eco Garden · Built in Ghana</p>
+    <p class="text-[11px] text-muted tracking-[0.04em]">© {new Date().getFullYear()} Pokhills Eco Garden · Built in Ghana</p>
   </div>
 </footer>
