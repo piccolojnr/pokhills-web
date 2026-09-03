@@ -2,6 +2,7 @@
 import Base from '@/components/layout/Base.astro';
 import SectionLabel from '@/components/shared/SectionLabel.astro';
 import MenuCategory from '@/components/menu/MenuCategory.astro';
+import ComingSoonBadge from '@/components/shared/ComingSoonBadge.astro';
 import { getMenu } from '@/lib/api';
 import { slugify } from '@/lib/utils';
 
@@ -31,6 +32,7 @@ const bgClasses = ['bg-cream', 'bg-stone'];
       <p class="font-display italic text-[17px] text-stone/80">
         Fresh, honest, rooted in local flavour
       </p>
+      <ComingSoonBadge text="Menu coming soon" />
     </div>
   </section>
 
@@ -63,7 +65,7 @@ const bgClasses = ['bg-cream', 'bg-stone'];
   <!-- 4. Bottom note -->
   <section class="bg-cream py-16 px-6 text-center border-t border-stone/20">
     <p class="font-display italic text-[13px] text-stone leading-relaxed">
-      Prices in GHS. Menu and availability subject to change.
+      Sample menu for planning purposes. Final dishes, prices, and availability will be announced before opening.
     </p>
     <a
       href={waHref}

@@ -31,13 +31,20 @@ const { rooms } = Astro.props;
     </div>
 
     <!-- Room grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {rooms.map((room, i) => (
-        <div class="reveal" data-reveal="fade" data-reveal-delay={String(i * 100)}>
-          <RoomCard room={room} />
-        </div>
-      ))}
-    </div>
+    {rooms.length > 0 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {rooms.map((room, i) => (
+          <div class="reveal" data-reveal="fade" data-reveal-delay={String(i * 100)}>
+            <RoomCard room={room} />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="border border-stone/30 bg-stone/10 px-6 py-12 text-center">
+        <p class="font-display italic text-[24px] text-bark">Three rooms are being prepared.</p>
+        <p class="font-body text-sm text-muted mt-3">Room names, photography, amenities, and rates will be announced before reservations open.</p>
+      </div>
+    )}
 
   </div>
 </section>

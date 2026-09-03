@@ -8,6 +8,7 @@ import { getContent } from '@/lib/utils';
 
 const rooms = await getRooms();
 const content = await getSiteContent();
+const plannedRoomCount = Number(getContent(content, 'stat_rooms', '3'));
 
 // Featured rooms first
 const sortedRooms = [
@@ -21,7 +22,7 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 
 <Base
   title="Rooms & Stay"
-  description="Five boutique rooms set within the garden estate at Pokhills Eco Garden, Pokrom, Ghana."
+  description="Three rooms are being prepared at Pokhills Eco Gardens in Pokrom Nsabaa, Accra, Ghana. Details coming soon."
 >
 
   <!-- 1. Page Hero -->
@@ -33,31 +34,38 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
         The rooms
       </h1>
       <p class="font-display italic text-[18px] text-stone/80">
-        Five boutique rooms set within the garden estate
+        {plannedRoomCount} rooms are being prepared within the garden estate
       </p>
+      <ComingSoonBadge text="Opening soon" />
     </div>
   </section>
 
   <!-- 2. Intro strip -->
   <section class="bg-cream py-14 px-6 text-center">
     <p class="font-body text-base text-muted leading-relaxed max-w-2xl mx-auto">
-      {getContent(content, 'about.rooms_intro', 'Each room at Pokhills has its own character and its own view of the garden. Built with rammed earth, reclaimed timber, and local stone — designed to feel rooted in the land rather than imposed upon it. No two rooms are the same.')}
+      {getContent(content, 'about.rooms_intro', 'Three rooms are being prepared. Names, photography, amenities, and rates will be published once confirmed.')}
     </p>
   </section>
 
   <!-- 3. Rooms grid -->
   <section class="bg-cream pb-24 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sortedRooms.map(room => (
-          <RoomCard room={room} />
-        ))}
-      </div>
+      <p class="font-body text-xs text-muted text-center mb-8">Indicative room rates only. Final availability and pricing will be confirmed before reservations open.</p>
+      {sortedRooms.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sortedRooms.map(room => <RoomCard room={room} />)}
+        </div>
+      ) : (
+        <div class="border border-stone/30 bg-stone/10 px-6 py-14 text-center">
+          <p class="font-display italic text-[26px] text-bark">Room details coming soon.</p>
+          <p class="font-body text-sm text-muted mt-3">Names, photography, amenities, and rates will be published once they are confirmed.</p>
+        </div>
+      )}
     </div>
   </section>
 
   <!-- 4. Amenities overview -->
-  <section class="bg-stone py-20 px-6">
+  {sortedRooms.length > 0 && <section class="bg-stone py-20 px-6">
     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
 
       <!-- Left: Shared amenities -->
@@ -148,7 +156,7 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
       </div>
 
     </div>
-  </section>
+  </section>}
 
   <!-- 5. Reserve CTA -->
   <section class="bg-green-deep py-24 px-6 flex flex-col items-center text-center gap-6">

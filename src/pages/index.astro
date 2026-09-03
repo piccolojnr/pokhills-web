@@ -13,6 +13,7 @@ import { getContent } from "@/lib/utils";
 const rooms = await getRooms();
 const featuredRooms = rooms.filter((r) => r.featured).slice(0, 3);
 const content = await getSiteContent();
+const plannedRoomCount = Number(getContent(content, "stat_rooms", "3"));
 ---
 
 <Base
@@ -29,12 +30,12 @@ const content = await getSiteContent();
     subline={getContent(
       content,
       "hero.subline",
-      "A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.",
+      "An upcoming eco-retreat and garden bar in Pokrom Nsabaa, Accra, Ghana.",
     )}
   />
 
   <!-- 2. Stat Strip -->
-  <StatStrip roomCount={rooms.length} />
+  <StatStrip roomCount={plannedRoomCount} />
 
   <!-- 3. Estate Intro -->
   <section class="bg-cream px-6 pt-24 pb-0 text-center">

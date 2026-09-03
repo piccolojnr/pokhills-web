@@ -48,6 +48,7 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURICom
     <!-- Content -->
     <div class="relative z-10 flex flex-col items-center gap-4 text-center px-6 py-20">
       <SectionLabel text="Pokrom Garden Bar" color="ochre" />
+      <ComingSoonBadge text="Opening soon" />
       <h1 class="font-display font-normal text-[44px] md:text-[52px] leading-[1.1] text-cream">
         Eat, drink, and linger
       </h1>
@@ -97,31 +98,21 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURICom
     <OganicDivider fill="#D6CFBF" />
   </div>
 
-  <!-- 3. Opening hours -->
+  <!-- 3. Opening status -->
   <section class="bg-stone py-20 px-6 text-center">
     <div class="max-w-3xl mx-auto">
       <SectionLabel text="Visit us" color="ochre" />
       <h3 class="font-display font-normal text-[30px] text-bark leading-tight mt-3 mb-12">
-        When we're open
+        Opening soon
       </h3>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-stone/30">
-        {[
-          { label: 'Tue – Fri', time: hours.weekdays },
-          { label: 'Sat & Sun', time: hours.weekends },
-          { label: 'Bar hours', time: hours.bar },
-        ].map(({ label, time }) => (
-          <div class="bg-cream border border-stone/20 flex flex-col items-center justify-center gap-3 px-6 py-8">
-            <span class="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
-              {label}
-            </span>
-            <span class="font-display font-normal text-[22px] text-bark leading-snug text-center">
-              {time}
-            </span>
-          </div>
-        ))}
+      <div class="grid grid-cols-1 gap-px bg-stone/30">
+        <div class="bg-cream border border-stone/20 flex flex-col items-center justify-center gap-3 px-6 py-8">
+          <span class="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Status</span>
+          <span class="font-display font-normal text-[28px] text-bark leading-snug text-center">Opening soon</span>
+        </div>
       </div>
       <p class="font-body text-[12px] text-muted mt-6">
-        Closed on Mondays. Kitchen closes 30 minutes before bar.
+        Opening hours and walk-in details will be announced before launch.
       </p>
     </div>
   </section>

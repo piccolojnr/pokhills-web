@@ -1,20 +1,10 @@
 {
   "hero.tagline": "Where the forest breathes",
-  "hero.subline": "A boutique eco-retreat and garden bar tucked into twelve acres of living green in Pokrom, Ghana.",
-
-  "about.intro": "Pokhills Eco Garden began as a small plot of land and a stubborn belief that hospitality and the natural world don't have to be in conflict.",
-  "about.story.1": "The estate was built slowly — by hand, over several years. The rooms were constructed from rammed earth mixed on site, reclaimed timber sourced from demolition yards around Accra, and stone quarried from the ridge behind the property. Nothing was rushed and nothing was imported that could be made locally. The garden was planted before the first guest ever arrived: we wanted the trees to have a head start, and they have rewarded us for it.",
-  "about.story.2": "Pokrom Garden Bar came later, almost by accident. Neighbours and passing travellers began stopping at the gate to ask if they could sit a while — and the kitchen grew out of those early, informal afternoons. We had no menu at first. We cooked what the garden and the Pokrom market had that week. That is still how it works. The groundnut soup changes depending on who brought what to the gate in the morning.",
-  "about.story.3": "We are a small operation and we intend to stay that way. Every room is attended to personally. The food is cooked to order. The bar closes when the last guest heads to bed — usually later than any of us planned. We measure success not by occupancy rates, but by the number of guests who ask, on their last morning, whether there is any chance they can stay one more night. There usually is.",
-  "about.values": "[{\"title\":\"Low footprint\",\"body\":\"Solar power, rainwater harvesting, composting, and a strict no-single-use-plastic policy across the estate. The garden absorbs more carbon than the operation produces.\"},{\"title\":\"Community first\",\"body\":\"We source from local farmers, employ from the surrounding villages, and reinvest a portion of every booking into the Pokrom community fund. Hospitality only works if the community it sits in is doing well.\"},{\"title\":\"Slow hospitality\",\"body\":\"No check-in kiosks, no QR code menus, no algorithm. Just people, food, and a garden that rewards those who take their time. If you are in a hurry, we are probably the wrong place.\"}]",
-
-  "restaurant.description": "Pokrom Garden Bar is open to guests and visitors alike. The terrace catches the afternoon breeze off the ridge, and the kitchen stays open until the last order is called — usually long after the stars are out.",
-  "restaurant.kitchen": "The menu follows the market and the season, not the other way around. We cook Ghanaian food with confidence: tilapia on the grill every evening, groundnut soup simmering from midday, jollof made the slow way in cast iron. There is always a vegetarian option and usually something foraged from the estate. We do not do fusion. We do Ghanaian food, done properly, with a few house specials that have quietly become the reason people come back.",
-  "restaurant.bar": "The bar was built around the idea of drinking locally. Palm wine tapped fresh each afternoon from a tapper two villages over. Sobolo brewed in-house — the recipe has been adjusted eleven times and is not changing again. Akpeteshie poured neat or worked into cocktails named after the dry season and the night shift. We keep a short list of imported spirits for those who need them, and Club Beer in the fridge for those who already know what they want.",
-  "restaurant.hours": "{\"weekdays\":\"Tuesday to Friday, 11am – 10pm\",\"weekends\":\"Saturday & Sunday, 9am – 11pm\",\"bar\":\"Bar service until midnight on weekends\",\"note\":\"Closed Mondays\"}",
-
-  "contact.address": "Pokrom, Eastern Region, Ghana",
-  "contact.whatsapp": "+233 000 000 000",
-  "contact.email": "hello@pokhillsecogarden.com",
-  "contact.hours": "WhatsApp from Tuesday to Sunday, 8am – 9pm. We are closed Mondays. Email responses within 24 hours."
+  "hero.subline": "Pokhills Eco Gardens is an upcoming eco-retreat and garden bar in Pokrom Nsabaa, Ghana.",
+  "about.intro": "Pokhills Eco Gardens is being prepared as a place to slow down, enjoy local food, and reconnect with nature.",
+  "restaurant.description": "Pokrom Garden Bar is being prepared for its opening. The menu and opening hours will be announced before launch.",
+  "restaurant.hours": "{\"weekdays\":\"To be announced\",\"weekends\":\"To be announced\",\"bar\":\"To be announced\",\"note\":\"Opening hours will be announced before launch\"}",
+  "contact.address": "RQQG+2J8, Pokrom Nsabaa, Ghana",
+  "contact.email": "pokhillsecogarden@gmail.com",
+  "contact.hours": "Email responses and visitor information will be announced before launch."
 }
