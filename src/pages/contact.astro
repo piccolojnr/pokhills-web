@@ -10,7 +10,7 @@ const content = await getSiteContent();
 const address   = getContent(content, 'contact.address', 'RQQG+2J8, Pokrom Nsabaa, Accra, Ghana');
 const email     = getContent(content, 'contact.email', 'pokhillsecogarden@gmail.com');
 const hours     = getContent(content, 'contact.hours', '');
-const whatsapp  = import.meta.env.PUBLIC_WHATSAPP ?? '+233000000000';
+const whatsapp  = import.meta.env.PUBLIC_WHATSAPP ?? '';
 const mapsKey   = import.meta.env.PUBLIC_GOOGLE_MAPS_KEY ?? '';
 const waHref    = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 const mapsQuery = encodeURIComponent(address);
@@ -89,7 +89,7 @@ const mapsLink  = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
           <ul class="flex flex-col gap-4">
 
             <!-- WhatsApp -->
-            <li>
+            {whatsapp && <li>
               <a
                 href={waHref}
                 target="_blank"
@@ -106,7 +106,7 @@ const mapsLink  = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
                   <span class="block font-body text-[12px] text-muted mt-0.5">{whatsapp}</span>
                 </span>
               </a>
-            </li>
+            </li>}
 
             <!-- Email -->
             <li class="flex items-center gap-3">
@@ -156,7 +156,7 @@ const mapsLink  = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
           <div class="flex items-center gap-4">
             <!-- Instagram -->
             <a
-              href="https://instagram.com/pokhillsecogarden"
+              href="https://www.instagram.com/pokhillsecogardens/"
               target="_blank"
               rel="noopener noreferrer"
               class="w-10 h-10 rounded-full bg-stone/30 flex items-center justify-center text-muted hover:text-ochre hover:bg-ochre/10 transition-colors duration-150"
@@ -170,7 +170,7 @@ const mapsLink  = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
             </a>
             <!-- Facebook -->
             <a
-              href="https://facebook.com/pokhillsecogarden"
+              href="https://www.facebook.com/pokhillsecogardens/"
               target="_blank"
               rel="noopener noreferrer"
               class="w-10 h-10 rounded-full bg-stone/30 flex items-center justify-center text-muted hover:text-ochre hover:bg-ochre/10 transition-colors duration-150"

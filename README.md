@@ -6,13 +6,13 @@ Astro 6 static site for [Pokhills Eco Garden](https://pokhillsecogarden.com) —
 
 ## Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | Astro 6 (static output) |
-| Styling | Tailwind CSS v4 (via `@tailwindcss/vite`) |
-| Islands | React 19 (`client:load`) |
-| Hosting | Vercel (static adapter) |
-| Fonts | Cormorant Garamond + DM Sans (self-hosted TTF) |
+| Layer     | Technology                                     |
+| --------- | ---------------------------------------------- |
+| Framework | Astro 6 (static output)                        |
+| Styling   | Tailwind CSS v4 (via `@tailwindcss/vite`)      |
+| Islands   | React 19 (`client:load`)                       |
+| Hosting   | Vercel (static adapter)                        |
+| Fonts     | Cormorant Garamond + DM Sans (self-hosted TTF) |
 
 ---
 
@@ -48,7 +48,7 @@ PUBLIC_API_MODE=mock
 PUBLIC_API_BASE=https://api.pokhillsecogarden.com
 
 # WhatsApp number for CTA links (include country code, no spaces)
-PUBLIC_WHATSAPP=+233000000000
+PUBLIC_WHATSAPP=233202400666
 
 # Google Maps Embed API key (optional — falls back to a styled placeholder)
 PUBLIC_GOOGLE_MAPS_KEY=
@@ -63,10 +63,10 @@ PUBLIC_SITE_URL=https://pokhillsecogarden.com
 
 The site uses a switcher in `src/lib/api.ts` to toggle between two implementations:
 
-| Mode | Source | When to use |
-|------|--------|-------------|
+| Mode   | Source                                    | When to use                      |
+| ------ | ----------------------------------------- | -------------------------------- |
 | `mock` | `src/data/*.json` + `src/lib/api.mock.ts` | Local development, design review |
-| `live` | Laravel REST API + `src/lib/api.live.ts` | Staging and production |
+| `live` | Laravel REST API + `src/lib/api.live.ts`  | Staging and production           |
 
 Switch by setting `PUBLIC_API_MODE=live` in your environment.
 

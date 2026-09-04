@@ -37,7 +37,7 @@ const typeLabel: Record<Room["type"], string> = {
   deluxe: "Deluxe",
 };
 
-const whatsapp = import.meta.env.PUBLIC_WHATSAPP ?? "+233000000000";
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP ?? "233202400666";
 const waHref = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi! I'm interested in booking ${room.name} at Pokhills Eco Garden.`)}`;
 ---
 
@@ -67,11 +67,22 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodeURICom
       >
         <!-- Gallery -->
         <div>
-          {room.images.length > 0 ? (
-            <RoomGallery images={room.images} roomName={room.name} client:load />
-          ) : (
-            <PlaceholderImage tone="green" aspect="4/3" seed={room.name} label="Photography coming soon" />
-          )}
+          {
+            room.images.length > 0 ? (
+              <RoomGallery
+                images={room.images}
+                roomName={room.name}
+                client:load
+              />
+            ) : (
+              <PlaceholderImage
+                tone="green"
+                aspect="4/3"
+                seed={room.name}
+                label="Photography coming soon"
+              />
+            )
+          }
         </div>
 
         <!-- Sticky detail card -->
@@ -168,7 +179,10 @@ const waHref = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodeURICom
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl">
         <SectionLabel text="About this room" color="stone" />
-        <p class="reveal font-body text-base text-muted leading-relaxed mt-5" data-reveal="fade">
+        <p
+          class="reveal font-body text-base text-muted leading-relaxed mt-5"
+          data-reveal="fade"
+        >
           {room.description}
         </p>
       </div>
