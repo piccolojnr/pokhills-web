@@ -18,10 +18,10 @@ Separate business IDs, paths and content sources allow future domain routing wit
 
 ## Assets and content still required
 
-- **Missing:** official Pokrom logo and the referenced brand image. The provided attachment contains instructions only. The header uses a clean typographic placeholder, not a recreated official logo.
-- **Missing:** verified property/bar/food/drinks photography. All botanical illustrations are CSS placeholders visibly labelled as such. Replace them with approved photographs before claiming to show the property.
+- **Brand reference received:** the supplied Pokrom moodboard now guides the leafy wreath, olive/cream palette, timber and rattan photography. A transparent logo adaptation makes ECO BAR larger than POKROM, as requested; an official vector master remains welcome. See [ASSETS.md](./ASSETS.md) for the generation prompt and saved assets.
+- **Missing:** verified property/bar/food/drinks photography. Licensed stock photographs now provide atmosphere on Pokrom pages, visibly labelled as inspiration with source credits. They are not presented as the property or confirmed menu. Pokhills still uses a labelled illustration placeholder.
 - **Reused:** official Pokhills transparent logo, existing icons, self-hosted Cormorant Garamond and DM Sans. These fonts provide the requested serif/sans direction without another dependency.
-- **Created:** a typographic social-sharing card in SVG and PNG. It is not a Pokrom logo and makes no opening-date claim.
+- **Created:** adapted Pokrom PNG/WebP logo and a matching social-sharing card, with ECO BAR as the larger line. No opening-date claim is made.
 - **Business confirmation needed:** actual opening status/date, operating hours, final menu and prices, current contact routing, approved Pokrom branding and photography.
 
 ## Routes, SEO and deployment
@@ -46,3 +46,9 @@ Run `pnpm exec astro check`, `pnpm exec astro build`, then `pnpm test` (tests re
 - Mobile menu handlers: browser-dispatched click opened the menu; Escape closed it and returned focus. The integrated browser pointer automation timed out after device emulation, so physical pointer/touch interactions still merit a manual smoke check.
 - Local asset integrity checks passed; no broken property images were introduced. CSS illustrations are explicitly labelled placeholders. Email, WhatsApp and Maps destinations were inspected without sending messages.
 - Plain local preview requests for `/_vercel/insights/script.js` return 404, as expected for the existing Vercel Analytics integration outside Vercel. No live enquiry backend, platform redirects or production deployment was exercised.
+
+### Branding-reference follow-up
+
+The supplied moodboard has now been applied with the requested reversed hierarchy: ECO BAR is larger than POKROM in the generated logo, header/footer text lockups, homepage heading and social card. Four licensed Unsplash inspiration images replace Pokrom placeholders; local responsive WebP sources, photographer credits and visible disclosures are included. Full prompt, paths and source pages are in [ASSETS.md](./ASSETS.md).
+
+After this follow-up, the production build and all three regression groups pass; Astro checks report zero errors and warnings with the same pre-existing SmartImage hint. Desktop/mobile browser inspection confirmed the larger ECO BAR text, loaded hero image, no horizontal overflow, and no broken images on the bar/gallery pages. Opening status and menu restrictions remain unchanged. No production deployment was performed.

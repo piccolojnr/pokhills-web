@@ -1,5 +1,6 @@
 ﻿---
 import { statusLabel } from '@/data/businesses';
+import PokromBrand from '@/components/shared/PokromBrand.astro';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { label: 'Home', href: '/' }, { label: 'Pokrom Eco Bar', href: '/restaurant' },
@@ -9,7 +10,7 @@ const links = [
 ---
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="launch-nav">
-  <a class="pokrom-wordmark" href="/" aria-label="Pokrom Eco Bar home"><span>POKROM</span><small>ECO BAR</small></a>
+  <a class="pokrom-brand-link" href="/" aria-label="Pokrom Eco Bar home"><PokromBrand /></a>
   <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu <span aria-hidden="true">☰</span></button>
   <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
     {links.map(({ label, href }) => <a href={href} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>{label}{href === '/rooms' && <small class="nav-status">{statusLabel('pokhills')}</small>}</a>)}

@@ -1,9 +1,10 @@
 ﻿---
 import { property, statusLabel } from '@/data/businesses';
+import PokromBrand from '@/components/shared/PokromBrand.astro';
 ---
 <footer class="launch-footer">
   <div class="footer-grid wrap">
-    <div><a class="pokrom-wordmark" href="/"><span>POKROM</span><small>ECO BAR</small></a><p>Nature · Taste · Experience</p><p class="footer-note">Two experiences. One garden destination.</p></div>
+    <div><a class="pokrom-brand-link" href="/" aria-label="Pokrom Eco Bar home"><PokromBrand /></a><p>Nature · Taste · Experience</p><p class="footer-note">Two experiences. One garden destination.</p></div>
     <div><p class="eyebrow">Explore</p><nav aria-label="Footer navigation"><a href="/restaurant">Pokrom Eco Bar · {statusLabel('pokrom')}</a><a href="/menu">Food & Drinks</a><a href="/gallery">Gallery</a><a href="/about">Our garden destination</a><a href="/rooms">Pokhills Eco Garden · {statusLabel('pokhills')}</a></nav></div>
     <div><p class="eyebrow">Find the garden</p><address>{property.address}</address><a href={property.maps} target="_blank" rel="noopener noreferrer">Get directions ↗</a><a href={`mailto:${property.email}`}>{property.email}</a><a href="https://www.instagram.com/pokhillsecogardens/" target="_blank" rel="noopener noreferrer">Pokhills on Instagram ↗</a><a href="https://www.facebook.com/pokhillsecogardens/" target="_blank" rel="noopener noreferrer">Pokhills on Facebook ↗</a></div>
   </div>

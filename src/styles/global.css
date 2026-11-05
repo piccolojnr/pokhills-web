@@ -341,3 +341,41 @@ h2 em { color: var(--brown); }
   .location-card { padding: 35px 22px; } .brand-card { padding: 30px 22px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+/* Botanical Pokrom identity: ECO BAR is the dominant name in every lockup. */
+.pokrom-brand-link { display: inline-flex; flex-shrink: 0; }
+.pokrom-brand { display: flex; align-items: center; gap: 12px; }
+.pokrom-brand > img { width: 84px; height: 84px; object-fit: contain; }
+.pokrom-brand-words { display: flex; flex-direction: column; align-items: center; color: var(--forest); }
+.pokrom-brand-words > span { font-family: var(--font-display); font-size: 14px; font-weight: 600; letter-spacing: .2em; line-height: 1.2; }
+.pokrom-brand-words > strong { font-family: var(--font-display); font-size: 32px; font-weight: 600; letter-spacing: .035em; line-height: 1.2; white-space: nowrap; }
+.launch-nav { padding-block: 12px; }
+.hero-copy h1 .hero-welcome { display: block; font-size: 25px; letter-spacing: .015em; font-weight: 400; margin-bottom: 18px; }
+.hero-copy h1 .hero-pokrom { display: block; font-size: clamp(32px, 3.5vw, 46px); letter-spacing: .08em; line-height: 1.1; text-transform: uppercase; }
+.hero-copy h1 > em { display: block; font-size: clamp(68px, 7.6vw, 108px); line-height: 1; margin-top: 3px; }
+.inspiration-photo { margin: 0; min-width: 0; }
+.inspiration-photo-frame { position: relative; aspect-ratio: 4/4.5; overflow: hidden; background: #263c26; }
+.inspiration-photo-frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.inspiration-photo-frame::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #102216b3); pointer-events: none; }
+.photo-title { position: absolute; left: 24px; bottom: 25px; right: 24px; color: #fff9ed; font-family: var(--font-display); font-size: 30px; line-height: 1.15; z-index: 1; }
+.inspiration-photo figcaption { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; font-size: 10px; line-height: 1.6; color: #51564a; }
+.inspiration-photo figcaption > a { width: fit-content; text-decoration: underline; text-underline-offset: 3px; font-size: 9px; }
+.inspiration-hero .inspiration-photo-frame { aspect-ratio: 4/4.7; border-radius: 46% 46% 0 0; }
+.inspiration-hero .photo-title { font-size: 34px; }
+.inspiration-gallery { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+.inspiration-gallery .inspiration-photo-frame { aspect-ratio: 4/4.3; }
+.launch-footer .pokrom-brand-link { margin-bottom: 24px; }
+.launch-footer .pokrom-brand > img { background: var(--warm-cream); border-radius: 50%; padding: 4px; }
+.launch-footer .pokrom-brand-words { color: var(--warm-cream); }
+@media (max-width: 1100px) { .primary-nav { gap: 17px; } .pokrom-brand { gap: 8px; } .pokrom-brand > img { width: 68px; height: 68px; } .pokrom-brand-words > strong { font-size: 27px; } .pokrom-brand-words > span { font-size: 12px; } }
+@media (max-width: 620px) {
+  .launch-nav { padding-block: 10px; }
+  .pokrom-brand > img { width: 66px; height: 66px; }
+  .pokrom-brand-words > span { font-size: 11px; }
+  .pokrom-brand-words > strong { font-size: 27px; }
+  .hero-copy h1 .hero-welcome { font-size: 22px; margin-bottom: 14px; }
+  .hero-copy h1 .hero-pokrom { font-size: 32px; }
+  .hero-copy h1 > em { font-size: clamp(70px, 18vw, 92px); }
+  .inspiration-hero .inspiration-photo-frame { aspect-ratio: 4/4.2; }
+  .photo-title, .inspiration-hero .photo-title { font-size: 28px; left: 20px; right: 20px; }
+  .inspiration-gallery { grid-template-columns: 1fr; }
+}

@@ -1,14 +1,15 @@
 ﻿---
 import Base from '@/components/layout/Base.astro';
-import GardenPlaceholder from '@/components/shared/GardenPlaceholder.astro';
+import InspirationPhoto from '@/components/shared/InspirationPhoto.astro';
+import { inspirationPhotos, type InspirationPhotoId } from '@/data/inspiration';
 import GalleryLightbox from '@/components/gallery/GalleryLightbox';
 import { getGallery } from '@/lib/api';
 const images = await getGallery();
-const subjects = ['The garden', 'The bar', 'Seating', 'Food', 'Drinks', 'The atmosphere'];
+const inspirationIds = Object.keys(inspirationPhotos) as InspirationPhotoId[];
 ---
 <Base title="Gallery" description="Explore the garden, bar, seating and atmosphere planned for Pokrom Eco Bar. Property photography will be shared here when available.">
-  <section class="page-intro wrap"><p class="eyebrow">A glimpse of Pokrom</p><h1>Room for <em>good moments.</em></h1><p>{images.length ? 'Explore our garden destination through the gallery.' : 'Our gallery is growing. Actual property, food and drinks photography will be shared here when available. The illustrations below are placeholders.'}</p></section>
-  <section class="section wrap"><div class="gallery-grid">{images.length ? images.map((img, index) => <button class="gallery-item" data-index={index} aria-label={`View ${img.caption ?? img.category}`}><img src={img.url} alt={img.caption ?? img.category} width="720" height="540" loading="lazy" decoding="async" /><span>{img.caption ?? img.category}</span></button>) : subjects.map((subject, i) => <GardenPlaceholder label={subject} variant={i % 3 === 1 ? 'warm' : i % 3 === 2 ? 'olive' : ''} />)}</div>{images.length > 0 && <GalleryLightbox images={images} client:load />}</section>
+  <section class="page-intro wrap"><p class="eyebrow">The mood we’re creating</p><h1>Room for <em>good moments.</em></h1><p>{images.length ? 'Explore our garden destination through the gallery.' : 'Actual property photography is coming soon. The photos below are inspiration images from other locations and do not show Pokrom or our menu.'}</p></section>
+  <section class="section wrap"><div class:list={['gallery-grid', { 'inspiration-gallery': !images.length }]}>{images.length ? images.map((img, index) => <button class="gallery-item" data-index={index} aria-label={`View ${img.caption ?? img.category}`}><img src={img.url} alt={img.caption ?? img.category} width="720" height="540" loading="lazy" decoding="async" /><span>{img.caption ?? img.category}</span></button>) : inspirationIds.map(photo => <InspirationPhoto photo={photo} />)}</div>{images.length > 0 && <GalleryLightbox images={images} client:load />}</section>
 </Base>
 <script>
   document.querySelectorAll<HTMLButtonElement>('.gallery-item').forEach(item => item.addEventListener('click', () => window.dispatchEvent(new CustomEvent('gallery:open', { detail: { index: Number(item.dataset.index) } }))));

@@ -60,7 +60,10 @@ test('launch defaults show honest menu and stays states without transaction or m
     assert.doesNotMatch(html, /\/ night|GHS\s*\d|type="submit"|checkout/i);
   }
   assert.doesNotMatch(htmlFor('/contact'), /<form/);
-  assert.match(htmlFor('/gallery'), /illustrations below are placeholders/);
+  assert.match(htmlFor('/gallery'), /inspiration images from other locations/);
+  assert.match(htmlFor('/'), /Inspiration photo/);
+  assert.match(htmlFor('/'), /Not photographed at Pokrom/);
+  assert.match(htmlFor('/'), /pokrom-eco-bar-logo.webp/);
   assert.ok(existsSync('dist/brand/pokrom-social.png'));
   const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
   for (const route of routes.filter(route => !['/reserve', '/book-a-table'].includes(route))) {

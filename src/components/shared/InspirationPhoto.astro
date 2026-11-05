@@ -1,0 +1,23 @@
+---
+import { inspirationPhotos, type InspirationPhotoId } from '@/data/inspiration';
+interface Props { photo: InspirationPhotoId; hero?: boolean }
+const { photo, hero = false } = Astro.props;
+const image = inspirationPhotos[photo];
+---
+<figure class:list={['inspiration-photo', { 'inspiration-hero': hero }]}>
+  <div class="inspiration-photo-frame">
+    <img
+      src={`${image.src}-960.webp`}
+      srcset={`${image.src}-640.webp 640w, ${image.src}-960.webp 960w, ${image.src}-1440.webp 1440w`}
+      sizes={hero ? '(max-width: 620px) calc(100vw - 40px), 46vw' : '(max-width: 620px) calc(100vw - 40px), (max-width: 860px) 45vw, 32vw'}
+      alt={image.alt}
+      width="960"
+      height="1200"
+      loading={hero ? 'eager' : 'lazy'}
+      fetchpriority={hero ? 'high' : 'auto'}
+      decoding="async"
+    />
+    {!hero && <span class="photo-title">{image.title}</span>}
+  </div>
+  <!-- {!hero && <figcaption><span>Inspiration photo · Not photographed at Pokrom</span><a href={image.source} target="_blank" rel="noopener noreferrer">{image.photographer} / Unsplash ↗</a></figcaption>} -->
+</figure>
