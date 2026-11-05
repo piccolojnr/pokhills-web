@@ -1,0 +1,8 @@
+---
+interface Props { label?: string; variant?: string }
+const { label = 'Garden & bar', variant = '' } = Astro.props;
+---
+<figure class:list={['garden-placeholder', variant]}>
+  <div class="garden-art" aria-hidden="true"><span class="garden-orbit"></span><span class="garden-leaf leaf-one"></span><span class="garden-leaf leaf-two"></span><span class="garden-leaf leaf-three"></span><span class="garden-line"></span></div>
+  <figcaption><span>{label}</span><span>Photography coming soon · Illustration placeholder</span></figcaption>
+</figure>

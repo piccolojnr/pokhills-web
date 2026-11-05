@@ -3,7 +3,7 @@
  * Do not import this file directly — use src/lib/api.ts.
  */
 
-import type { Room, MenuResponse, SiteContent, WaitlistEntry, ContactMessage } from './types';
+import type { Room, MenuResponse, SiteContent, WaitlistEntry, ContactMessage, GalleryImage } from './types';
 
 import contentData from '../data/content.json';
 
@@ -14,7 +14,7 @@ export async function getRooms(): Promise<Room[]> {
   return [];
 }
 
-export async function getRoom(slug: string): Promise<Room | null> {
+export async function getRoom(_slug: string): Promise<Room | null> {
   await delay();
   return null;
 }
@@ -29,17 +29,17 @@ export async function getSiteContent(): Promise<SiteContent> {
   return contentData as SiteContent;
 }
 
-export async function getGallery(category?: string): Promise<GalleryImage[]> {
+export async function getGallery(_category?: string): Promise<GalleryImage[]> {
   await delay();
   return [];
 }
 
 export async function submitWaitlist(_entry: WaitlistEntry): Promise<{ success: boolean }> {
   await delay();
-  return { success: true };
+  throw new Error('Online enquiries are unavailable in demo mode. Please contact the business directly.');
 }
 
 export async function submitContact(_msg: ContactMessage): Promise<{ success: boolean }> {
   await delay();
-  return { success: true };
+  throw new Error('Online enquiries are unavailable in demo mode. Please contact the business directly.');
 }

@@ -1,5 +1,8 @@
 {
   "buildCommand": "astro build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    { "source": "/rooms/:slug", "destination": "/rooms", "permanent": true }
+  ]
 }

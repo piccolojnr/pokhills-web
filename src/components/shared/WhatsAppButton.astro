@@ -1,10 +1,9 @@
 ---
-const raw = import.meta.env.PUBLIC_WHATSAPP ?? "233202400666";
-const number = raw.replace(/\D/g, "");
-const href = `https://wa.me/${number}`;
+import { property, enquiryLink } from '@/data/businesses';
+const href = enquiryLink('pokrom');
 ---
 
-<a
+{property.whatsapp && <a
   href={href}
   target="_blank"
   rel="noopener noreferrer"
@@ -27,4 +26,4 @@ const href = `https://wa.me/${number}`;
   >
     Chat
   </span>
-</a>
+</a>}

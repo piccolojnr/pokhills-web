@@ -1,173 +1,44 @@
-# Pokhills Eco Garden — Website
+﻿# Pokrom Eco Bar & Pokhills Eco Garden
 
-Astro 6 static site for [Pokhills Eco Garden](https://pokhillsecogarden.com) — a boutique eco-retreat and garden bar in Pokrom, Ghana.
+An Astro 6 public hospitality website at [pokhillsecogarden.com](https://pokhillsecogarden.com). Pokrom Eco Bar is the main launch focus. Pokhills Eco Garden is a separate accommodation business, currently coming soon.
 
----
+Built with Astro, Tailwind CSS 4, selected React islands, self-hosted Cormorant Garamond/DM Sans and the existing Vercel static adapter.
 
-## Stack
+## Local development
 
-| Layer     | Technology                                     |
-| --------- | ---------------------------------------------- |
-| Framework | Astro 6 (static output)                        |
-| Styling   | Tailwind CSS v4 (via `@tailwindcss/vite`)      |
-| Islands   | React 19 (`client:load`)                       |
-| Hosting   | Vercel (static adapter)                        |
-| Fonts     | Cormorant Garamond + DM Sans (self-hosted TTF) |
+Requires Node >=22.12 and pnpm.
 
----
-
-## Getting started
-
-```bash
-# 1. Clone
-git clone <repo-url>
-cd pokhills-web
-
-# 2. Install dependencies
-pnpm install
-
-# 3. Set up environment
-cp .env.example .env.local
-
-# 4. Start dev server
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
+pnpm exec astro check
+pnpm build
+pnpm test
+pnpm preview
 ```
 
----
+Tests inspect the generated site, so build before running them. There is no separate lint configuration; Astro checks cover Astro/TypeScript diagnostics.
 
-## Environment variables
+## Content and opening status
 
-Copy `.env.example` to `.env.local` and fill in:
+- [Business configuration](./src/data/businesses.ts): independent `coming_soon`, `open`, or `temporarily_closed` statuses, confirmed hours, property contacts and business-specific enquiry links. Both businesses default to `coming_soon`. Rebuild after changes; no automatic opening dates.
+- [Pokrom public menu](./src/data/pokrom-menu.ts): approved products and categories, independent of unfinished POS systems. Empty until management confirms the menu.
+- [Launch handover](./LAUNCH.md): route changes, reused/missing assets, confirmation checklist and verification notes.
 
-```env
-# "mock" uses local JSON fixtures (default for development)
-# "live" fetches from the Laravel API
-PUBLIC_API_MODE=mock
+## Optional environment variables
 
-# Base URL for the Laravel API (only needed when PUBLIC_API_MODE=live)
-PUBLIC_API_BASE=https://api.pokhillsecogarden.com
+Copy [.env.example](./.env.example) to `.env.local` when needed.
 
-# WhatsApp number for CTA links (include country code, no spaces)
-PUBLIC_WHATSAPP=233202400666
+| Variable | Purpose |
+| --- | --- |
+| `PUBLIC_API_MODE` | Default demo/local fixtures; `live` enables the existing Laravel API adapter. |
+| `PUBLIC_API_URL` | Laravel base URL for live room/gallery/content reads and enquiry submissions. |
+| `PUBLIC_WHATSAPP` | Override existing property WhatsApp number; empty suppresses WhatsApp links and uses email. |
 
-# Google Maps Embed API key (optional — falls back to a styled placeholder)
-PUBLIC_GOOGLE_MAPS_KEY=
+Contact forms are rendered only when live mode and an API URL are configured. Without that backend, direct email and WhatsApp links remain available. Demo form submissions reject rather than pretending to save enquiries. No accommodation booking or payment flow is enabled.
 
-# Site URL (used for canonical URLs and OG images)
-PUBLIC_SITE_URL=https://pokhillsecogarden.com
-```
+## Deployment
 
----
+The current [Astro configuration](./astro.config.mjs) and [Vercel configuration](./vercel.json) retain static output and the existing domain. Vercel redirects old room detail URLs to the Pokhills Stays page. All existing top-level public routes remain available. Metadata, sitemap and sharing previews are built with the site.
 
-## API modes
-
-The site uses a switcher in `src/lib/api.ts` to toggle between two implementations:
-
-| Mode   | Source                                    | When to use                      |
-| ------ | ----------------------------------------- | -------------------------------- |
-| `mock` | `src/data/*.json` + `src/lib/api.mock.ts` | Local development, design review |
-| `live` | Laravel REST API + `src/lib/api.live.ts`  | Staging and production           |
-
-Switch by setting `PUBLIC_API_MODE=live` in your environment.
-
----
-
-## Required assets checklist
-
-The following files must be placed manually before deploying to production:
-
-### `/public/fonts/`
-
-All fonts are self-hosted. Required TTF files:
-
-- `CormorantGaramond-Regular.ttf`
-- `CormorantGaramond-Italic.ttf`
-- `CormorantGaramond-Medium.ttf`
-- `CormorantGaramond-MediumItalic.ttf`
-- `CormorantGaramond-SemiBold.ttf`
-- `CormorantGaramond-SemiBoldItalic.ttf`
-- `DMSans-Light.ttf`
-- `DMSans-Regular.ttf`
-- `DMSans-Medium.ttf`
-
-### `/public/og-default.jpg`
-
-Default Open Graph image shown when sharing any page on social media.
-
-- **Size:** 1200 × 630px
-- **Content:** Deep green (`#2D4A2D`) background, Pokhills Eco Garden logotype centred
-- **Format:** JPEG, optimised (~150–200KB)
-
-### `/public/brand/`
-
-Web-ready logo and favicon assets generated from the supplied Pokhills Eco Garden artwork.
-
----
-
-## Scripts
-
-```bash
-pnpm dev          # Start dev server at localhost:4321
-pnpm build        # Production build → ./dist/
-pnpm preview      # Preview production build locally
-pnpm astro check  # TypeScript + Astro type check
-```
-
----
-
-## Deploy to Vercel
-
-### First deploy
-
-1. Push the repo to GitHub
-2. Import the project at [vercel.com/new](https://vercel.com/new)
-3. Set the framework preset to **Astro**
-4. Add all environment variables from `.env.example`
-5. Deploy
-
-Every push to `main` triggers an automatic rebuild via Vercel's Git integration.
-
-### Vercel deploy hook (for Laravel CMS auto-rebuild)
-
-To rebuild the site whenever content is saved in the Laravel admin:
-
-1. In Vercel → Project → Settings → Git → **Deploy Hooks**
-2. Create a hook named `laravel-content-update` targeting the `main` branch
-3. Copy the generated webhook URL
-4. In your Laravel `.env`:
-   ```env
-   VERCEL_DEPLOY_HOOK=https://api.vercel.com/v1/integrations/deploy/...
-   ```
-5. In the Laravel observer/event that fires on content save:
-   ```php
-   Http::post(config('services.vercel.deploy_hook'));
-   ```
-
-The site rebuilds with fresh content within ~30 seconds of a save.
-
----
-
-## Project structure
-
-```
-src/
-├── components/
-│   ├── forms/          # ContactForm, WaitlistForm (React islands)
-│   ├── gallery/        # GalleryLightbox (React island)
-│   ├── home/           # Hero, StatStrip, ExperiencePanel, RoomTeaser, ...
-│   ├── layout/         # Base, Nav, Footer
-│   ├── menu/           # MenuCategory, MenuItem
-│   ├── rooms/          # RoomCard, RoomGallery, AmenityBadge
-│   └── shared/         # SectionLabel, SmartImage, PlaceholderImage, ...
-├── data/               # JSON fixtures (mock mode)
-├── lib/
-│   ├── api.ts          # Switcher — picks mock or live at build time
-│   ├── api.mock.ts     # Mock implementation (reads JSON fixtures)
-│   ├── api.live.ts     # Live implementation (Laravel REST API)
-│   ├── types.ts        # Shared TypeScript interfaces
-│   └── utils.ts        # formatGHS, getContent, slugify, ...
-├── pages/              # One file per route + API endpoints
-└── styles/
-    ├── global.css      # @theme tokens + Tailwind import
-    └── fonts.css       # @font-face declarations
-```
+No deployment is performed by the development scripts. A production push may trigger the repository's existing Vercel Git integration, so publish only after launch approval. Vercel Analytics is served by Vercel; its platform script is unavailable in a plain local preview.

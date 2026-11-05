@@ -1,138 +1,25 @@
----
-const pathname = Astro.url.pathname;
-
+﻿---
+import { statusLabel } from '@/data/businesses';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
-  { label: 'Stay',         href: '/rooms' },
-  { label: 'Dine & Drink', href: '/restaurant' },
-  { label: 'Menu',         href: '/menu' },
-  { label: 'Gallery',      href: '/gallery' },
-  { label: 'About',        href: '/about' },
-  { label: 'Contact',      href: '/contact' },
+  { label: 'Home', href: '/' }, { label: 'Pokrom Eco Bar', href: '/restaurant' },
+  { label: 'Food & Drinks', href: '/menu' }, { label: 'Gallery', href: '/gallery' },
+  { label: 'Pokhills Stays', href: '/rooms' }, { label: 'Contact', href: '/contact' },
 ];
-
-function isActive(href: string) {
-  if (href === '/') return pathname === '/';
-  return pathname.startsWith(href);
-}
 ---
-
-<header id="site-nav" class="site-nav sticky top-0 z-[100] flex items-center justify-between h-14 px-6 bg-green-deep">
-
-  <!-- Logo -->
-  <a href="/" class="flex items-center gap-2.5 leading-none" aria-label="Pokhills Eco Garden — home">
-    <img
-      src="/brand/pokhills-logo-transparent.webp"
-      alt="Pokhills Eco Garden logo"
-      width="36"
-      height="36"
-      class="h-9 w-9 rounded-full object-cover flex-shrink-0"
-    />
-    <span class="font-display font-medium text-xl text-cream tracking-[0.02em]">Pokhills</span
-    ><span class="font-display font-normal italic text-xl text-stone tracking-[0.02em]"> Eco Garden</span>
-  </a>
-
-  <!-- Desktop nav -->
-  <nav class="hidden md:flex items-center gap-7" aria-label="Primary navigation">
-    {links.map(({ label, href }) => (
-      <a
-        href={href}
-        class:list={[
-          'font-body text-[11px] font-normal uppercase tracking-[0.1em] transition-colors duration-150',
-          isActive(href) ? 'text-cream' : 'text-stone hover:text-cream',
-        ]}
-      >
-        {label}
-      </a>
-    ))}
-    <a
-      href="/reserve"
-      class="font-body text-[11px] font-medium uppercase tracking-[0.1em] text-cream bg-ochre px-[0.9rem] py-[0.45rem] rounded transition-colors duration-150 hover:bg-ochre-light"
-    >
-      Opening soon
-    </a>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<header class="launch-nav">
+  <a class="pokrom-wordmark" href="/" aria-label="Pokrom Eco Bar home"><span>POKROM</span><small>ECO BAR</small></a>
+  <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu <span aria-hidden="true">☰</span></button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+    {links.map(({ label, href }) => <a href={href} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>{label}{href === '/rooms' && <small class="nav-status">{statusLabel('pokhills')}</small>}</a>)}
   </nav>
-
-  <!-- Mobile hamburger -->
-  <label
-    for="nav-toggle"
-    class="flex md:hidden items-center justify-center text-cream cursor-pointer p-1"
-    aria-label="Open menu"
-  >
-    <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-      <rect y="0"  width="22" height="2" fill="currentColor"/>
-      <rect y="7"  width="22" height="2" fill="currentColor"/>
-      <rect y="14" width="22" height="2" fill="currentColor"/>
-    </svg>
-  </label>
 </header>
-
-<!-- Hidden checkbox drives the overlay — no JS required -->
-<input
-  type="checkbox"
-  id="nav-toggle"
-  class="absolute w-px h-px opacity-0 pointer-events-none"
-  aria-hidden="true"
-/>
-
-<!-- Mobile overlay -->
-<div
-  class="nav-overlay fixed inset-0 z-[200] bg-green-deep flex flex-col items-center justify-center gap-1 opacity-0 pointer-events-none transition-opacity duration-200"
-  aria-hidden="true"
->
-  <label
-    for="nav-toggle"
-    class="absolute top-5 right-6 text-stone cursor-pointer p-1"
-    aria-label="Close menu"
-  >
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <line x1="1" y1="1" x2="19" y2="19" stroke="currentColor" stroke-width="2"/>
-      <line x1="19" y1="1" x2="1" y2="19" stroke="currentColor" stroke-width="2"/>
-    </svg>
-  </label>
-
-  <img
-    src="/brand/pokhills-logo-transparent.webp"
-    alt="Pokhills Eco Garden logo"
-    width="64"
-    height="64"
-    class="h-16 w-16 rounded-full object-cover mb-4"
-  />
-  <nav class="flex flex-col items-center gap-1" aria-label="Mobile navigation">
-    {links.map(({ label, href }) => (
-      <a
-        href={href}
-        class:list={[
-          'font-display text-4xl font-normal tracking-[0.04em] leading-[1.4] transition-colors duration-150',
-          isActive(href) ? 'text-cream' : 'text-stone hover:text-cream',
-        ]}
-      >
-        {label}
-      </a>
-    ))}
-    <a
-      href="/reserve"
-      class="mt-6 font-body text-xs font-medium uppercase tracking-[0.1em] text-cream bg-ochre px-6 py-[0.65rem] rounded"
-    >
-      Opening soon
-    </a>
-  </nav>
-</div>
-
-<style>
-  /* Checkbox toggle — cannot be expressed as Tailwind utilities */
-  #nav-toggle:checked ~ .nav-overlay {
-    opacity: 1;
-    pointer-events: auto;
-  }
-</style>
-
 <script>
-  const nav = document.getElementById('site-nav');
-  if (nav) {
-    function update() {
-      nav!.classList.toggle('scrolled', window.scrollY > 80);
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  }
+  const toggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#primary-nav');
+  const setOpen = (open: boolean) => { toggle?.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('is-open', open); };
+  toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); } });
+  document.addEventListener('click', e => { if (e.target instanceof Node && !document.querySelector('.launch-nav')?.contains(e.target)) setOpen(false); });
 </script>

@@ -1,0 +1,6 @@
+---
+import { statusLabel, type BusinessId } from '@/data/businesses';
+interface Props { business?: BusinessId }
+const { business = 'pokrom' } = Astro.props;
+---
+<span class="business-status"><span aria-hidden="true"></span>{statusLabel(business)}</span>

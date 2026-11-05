@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Nav from "./Nav.astro";
 import Footer from "./Footer.astro";
 import WhatsAppButton from "../shared/WhatsAppButton.astro";
+import { property, statusMessage } from '@/data/businesses';
 
 interface Props {
   title: string;
@@ -14,13 +15,13 @@ interface Props {
 
 const {
   title,
-  description = "Pokhills Eco Garden — a boutique stay and garden bar in Ghana. Pokrom Garden Bar and Pokhills Eco Garden Stay.",
-  ogImage = "/og-default.jpg",
+  description = "Discover Pokrom Eco Bar in Pokrom Nsabaa, Ghana. Nature, taste and experience. Pokhills Eco Garden accommodation is coming soon.",
+  ogImage = "/brand/pokrom-social.png",
   canonical,
   noindex = false,
 } = Astro.props;
 
-const fullTitle = `${title} — Pokhills Eco Garden`;
+const fullTitle = `${title} | Pokrom Eco Bar & Pokhills Eco Garden`;
 const canonicalURL = canonical
   ? new URL(canonical, Astro.site)
   : new URL(Astro.url.pathname, Astro.site);
@@ -47,7 +48,8 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="Pokhills Eco Garden" />
+    <meta property="og:site_name" content="Pokrom Eco Bar & Pokhills Eco Garden" />
+    <meta property="og:image:alt" content="Pokrom Eco Bar — Nature · Taste · Experience" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -56,7 +58,14 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Theme colour -->
-    <meta name="theme-color" content="#2D4A2D" />
+    <meta name="theme-color" content="#1B3B24" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@graph': [
+        { '@type': 'WebSite', '@id': new URL('/#website', Astro.site).href, url: Astro.site?.href, name: 'Pokrom Eco Bar & Pokhills Eco Garden' },
+        { '@type': 'BarOrPub', '@id': new URL('/restaurant#business', Astro.site).href, name: 'Pokrom Eco Bar', url: new URL('/restaurant', Astro.site).href, address: property.address, description: statusMessage('pokrom') },
+        { '@type': 'Organization', '@id': new URL('/rooms#business', Astro.site).href, name: 'Pokhills Eco Garden', url: new URL('/rooms', Astro.site).href, description: statusMessage('pokhills'), logo: new URL('/brand/pokhills-logo-transparent.webp', Astro.site).href },
+      ],
+    }).replace(/</g, '\\u003c')} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
@@ -66,12 +75,9 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <!-- Font preloads — Cormorant Garamond (above-the-fold weights) -->
     <link rel="preload" href="/fonts/CormorantGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/CormorantGaramond-Italic.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/CormorantGaramond-Medium.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/CormorantGaramond-MediumItalic.ttf" as="font" type="font/ttf" crossorigin />
 
     <!-- Font preloads — DM Sans -->
     <link rel="preload" href="/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin />
 
     <!-- Critical inline CSS — prevents FOUC on hero text before fonts load -->
     <style>
@@ -92,7 +98,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
   </head>
   <body>
     <Nav />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />

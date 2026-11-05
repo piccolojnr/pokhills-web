@@ -8,9 +8,9 @@ export const GET: APIRoute = async ({ site }) => {
 
   const staticPages = [
     { path: '/',           priority: '1.0', changefreq: 'daily'   },
-    { path: '/rooms',      priority: '0.9', changefreq: 'weekly'  },
-    { path: '/restaurant', priority: '0.6', changefreq: 'monthly' },
-    { path: '/menu',       priority: '0.6', changefreq: 'weekly'  },
+    { path: '/rooms',      priority: '0.6', changefreq: 'monthly'  },
+    { path: '/restaurant', priority: '0.9', changefreq: 'weekly' },
+    { path: '/menu',       priority: '0.8', changefreq: 'weekly'  },
     { path: '/gallery',    priority: '0.6', changefreq: 'monthly' },
     { path: '/about',      priority: '0.6', changefreq: 'monthly' },
     { path: '/contact',    priority: '0.6', changefreq: 'monthly' },
