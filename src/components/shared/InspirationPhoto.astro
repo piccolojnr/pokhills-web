@@ -9,7 +9,7 @@ const image = inspirationPhotos[photo];
     <img
       src={`${image.src}-960.webp`}
       srcset={`${image.src}-640.webp 640w, ${image.src}-960.webp 960w, ${image.src}-1440.webp 1440w`}
-      sizes={hero ? '(max-width: 620px) calc(100vw - 40px), 46vw' : '(max-width: 620px) calc(100vw - 40px), (max-width: 860px) 45vw, 32vw'}
+      sizes={hero ? '100vw' : '(max-width: 620px) calc(100vw - 40px), (max-width: 860px) 45vw, 32vw'}
       alt={image.alt}
       width="960"
       height="1200"
